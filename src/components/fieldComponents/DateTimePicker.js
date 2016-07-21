@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import {DateTimePicker as ReactWidgetsDateTimePicker} from 'react-widgets';
-import { getDateLocalizer } from '../../localization/dateLocalizer'; // TODO Move to Util Repo
+import { getDateLocalizer } from 'redux-autoform-utils';
 import FormGroup from '../FormGroup';
 
 class DateTimePicker extends Component {

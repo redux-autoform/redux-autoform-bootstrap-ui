@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getDisplayName } from '../../helpers/metadataHelper'; // TODO Move to Util Repo
+import { getDisplayName } from 'redux-autoform-utils';
 import { Checkbox as BootstrapCheckbox } from 'react-bootstrap';
 import Col from 'react-bootstrap/lib/Col';
 

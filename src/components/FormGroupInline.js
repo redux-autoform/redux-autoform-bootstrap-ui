@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { FormGroup as BootstrapFormGroup } from 'react-bootstrap';
 import FormGroupInlineControlLabel from './FormGroupInlineControlLabel';
 import FormGroupInlineContent from './FormGroupInlineContent'
-import { getDisplayName } from '../helpers/metadataHelper'; // TODO Move to Util Repo
+import { getDisplayName } from 'redux-autoform-utils';
 
 class FormGroupInline extends Component {
     static propTypes = {

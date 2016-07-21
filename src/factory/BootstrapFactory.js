@@ -1,4 +1,4 @@
-import ComponentFactory from './ComponentFactory'; //TODO Move to Util repo
+import  { ComponentFactory } from 'redux-autoform-utils';
 import { registerBaseComponents } from './helper/BootstrapComponentFactoryHelper';
 
 class BootstrapFactory extends ComponentFactory {
