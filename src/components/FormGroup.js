@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import FormGroupInline from './FormGroupInline';
+import FormGroupInline from './FormGroupInline.js';
 import FormGroupStacked from './FormGroupStacked';
 
 class FormGroup extends Component {

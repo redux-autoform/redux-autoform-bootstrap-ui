@@ -1,4 +1,4 @@
-import ComponentFactory from './ComponentFactory';
+import ComponentFactory from './ComponentFactory'; //TODO Move to Util repo
 import { registerBaseComponents } from './helper/BootstrapComponentFactoryHelper';
 
 class BootstrapFactory extends ComponentFactory {
