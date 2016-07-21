@@ -2,8 +2,9 @@
   "name": "redux-autoform-bootstrap-ui",
   "version": "1.0.0",
   "description": "Bootstrap UI implementation for redux-autoform",
-  "main": "./src/index.js",
+  "main": "./lib/index.js",
   "scripts": {
+    "build-lib": "babel-node ./tools/build-lib.js",
     "test": "mocha ./test --compilers js:babel-register"
   },
   "repository": {
@@ -41,6 +42,11 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
     "chai": "^3.5.0",
-    "mocha": "^2.5.3"
+    "child-process-promise": "^2.0.3",
+    "colors": "^1.1.2",
+    "fs-extra-promise": "^0.4.0",
+    "mocha": "^2.5.3",
+    "path": "^0.12.7",
+    "rimraf-promise": "^2.0.0"
   }
 }
