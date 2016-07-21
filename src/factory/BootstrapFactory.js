@@ -38,34 +38,6 @@ class BootstrapFactory extends ComponentFactory {
         this.setDefaultGroupComponent('Group');
     };
 
-    static createComponentFactory(type) {
-        switch (type) {
-            case 'edit':
-                return new BootstrapFactory({
-                    'string': 'TextBox',
-                    'array': 'ArrayContainer',
-                    'datetime': 'DateTimePicker',
-                    'time': 'DateTimePicker',
-                    'date': 'DateTimePicker',
-                    'int' : 'TextBox',
-                    'float': 'TextBox',
-                    'bool': 'Checkbox',
-                    'group': 'FieldGroup'
-                });
-            case 'details':
-                return new BootstrapFactory({
-                    'string': 'Static',
-                    'array': 'ArrayContainer',
-                    'datetime': 'Static',
-                    'time': 'Static',
-                    'date': 'Static',
-                    'int': 'Static',
-                    'float': 'Static',
-                    'bool': 'Static',
-                    'group': 'FieldGroup'
-                });
-        }
-    }
 }
 
 export default BootstrapFactory;

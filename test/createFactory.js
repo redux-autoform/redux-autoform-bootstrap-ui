@@ -1,4 +1,4 @@
-import { BootstrapFactory } from '../src/index';
+import { EditComponentFactory, DetailsComponentFactory } from '../src/index';
 import { expect } from 'chai';
 
 
@@ -17,7 +17,7 @@ describe("Factory creation", function() {
             'group': 'FieldGroup'
         };
 
-        let factory = BootstrapFactory.createComponentFactory("edit");
+        let factory = EditComponentFactory;
 
         expect(factory.defaultFieldComponents).to.be.deep.equal(correctConfig);
         done()
@@ -36,7 +36,7 @@ describe("Factory creation", function() {
             'group': 'FieldGroup'
         };
 
-        let factory = BootstrapFactory.createComponentFactory("details");
+        let factory = DetailsComponentFactory;
 
         expect(factory.defaultFieldComponents).to.be.deep.equal(correctConfig);
         done()
