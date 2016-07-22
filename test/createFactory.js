@@ -21,7 +21,7 @@ describe("Factory creation", function() {
 
         expect(factory.defaultFieldComponents).to.be.deep.equal(correctConfig);
         done()
-    })
+    });
 
     it("User requests an details factory", function(done) {
         let correctConfig = {
