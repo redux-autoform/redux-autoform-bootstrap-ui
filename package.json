@@ -4,7 +4,7 @@
   "description": "Bootstrap UI implementation for redux-autoform",
   "main": "./lib/index.js",
   "scripts": {
-    "build-lib": "babel-node ./tools/build-lib.js",
+    "build-lib": "cross-env NODE_ENV=production babel-node ./tools/build-lib.js",
     "test": "mocha ./test --compilers js:babel-register"
   },
   "repository": {
@@ -45,6 +45,7 @@
     "chai": "^3.5.0",
     "child-process-promise": "^2.0.3",
     "colors": "^1.1.2",
+    "cross-env": "^2.0.0",
     "fs-extra-promise": "^0.4.0",
     "mocha": "^2.5.3",
     "path": "^0.12.7",
