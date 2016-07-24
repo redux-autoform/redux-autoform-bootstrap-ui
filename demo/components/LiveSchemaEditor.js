@@ -134,7 +134,7 @@ class LiveSchemaEditor extends Component {
                 <div className='row'>
                     <div className="col-md-12">
                         <h2>redux-autoform-bootstrap-ui demo {psjon.version} <Badge>Ctrl + H = Redux DevTools</Badge>
-                            <a className="pull-right" target="_blank" href="https://github.com/gearz-lab/redux-autoform"
+                            <a className="pull-right" target="_blank" href="https://github.com/redux-autoform/redux-autoform"
                                 style={{color: 'black'}}>
                                 <i className="fa fa-github" aria-hidden="true"/>
                             </a>
