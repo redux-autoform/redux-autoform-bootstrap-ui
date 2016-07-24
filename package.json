@@ -7,7 +7,8 @@
     "build-demo": "cross-env NODE_ENV=production babel-node ./tools/build-demo.js",
     "build-lib": "cross-env NODE_ENV=production babel-node ./tools/build-lib.js",
     "start": "cross-env NODE_ENV=development babel-node ./demo/Server.js",
-    "test": "mocha ./test --compilers js:babel-register"
+    "test": "mocha ./test --compilers js:babel-register",
+    "coverage": "babel-node ./node_modules/.bin/isparta cover _mocha"
   },
   "repository": {
     "type": "git",
@@ -52,6 +53,7 @@
     "express": "^4.14.0",
     "file-loader": "^0.9.0",
     "fs-extra-promise": "^0.4.0",
+    "isparta": "^4.0.0",
     "json-loader": "^0.5.4",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
