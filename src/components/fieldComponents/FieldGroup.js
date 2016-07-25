@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import FormGroup from '../FormGroup';
-import _ from 'underscore';
 
 class FieldGroup extends Component {
     static propTypes = {
@@ -17,7 +16,7 @@ class FieldGroup extends Component {
 
     getGroupContent = () => {
         let { componentFactory, _extra: { layout, fields }, group: groupName } = this.props;
-        let group = _.find(layout.groups, g => g.name == groupName);
+        let group = layout.groups.find(g => g.name == groupName);
         let groupProps = {
             component: group.component,
             layout: group,
