@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { Alert } from 'react-bootstrap';
-import _ from 'underscore';
 
 class Group extends Component {
     static propTypes = {
@@ -17,7 +16,7 @@ class Group extends Component {
         if (layout.fields) {
             
             components = layout.fields.map(field => {
-                let fieldMetadata = _.find(fields, cp => cp.name === field.name);
+                let fieldMetadata = fields.find(cp => cp.name === field.name);
                 
                 if (!fieldMetadata) {
                     throw Error(`Could not find field. Field: ${field.name}`);
