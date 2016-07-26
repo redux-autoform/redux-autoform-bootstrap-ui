@@ -13,7 +13,7 @@ require.extensions['.html'] = function (module, filename) {
 
 const repoRoot = path.resolve(__dirname, '../');
 const demoBuiltRoot = path.join(repoRoot, 'demo-built');
-const demoBuilt = path.join(demoBuiltRoot, 'redux-autoform');
+const demoBuilt = path.join(demoBuiltRoot, 'redux-autoform-bootstrap-ui');
 
 const licenseSrc = path.join(repoRoot, 'LICENSE');
 const licenseDest = path.join(demoBuilt, 'LICENSE');
