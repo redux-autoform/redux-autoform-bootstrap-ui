@@ -6,11 +6,6 @@ import psjon from '../../package.json';
 import { AutoForm } from 'redux-autoform';
 import { EditComponentFactory, DetailsComponentFactory } from '../../src/index';
 import { Alert, Badge } from 'react-bootstrap';
-import moment from 'moment';
-import numbro from 'numbro';
-import reactWidgetsMomentLocalizer from 'react-widgets/lib/localizers/moment';
-import momentLocalizer from 'redux-autoform-utils/lib/localization/momentLocalizer';
-import numbroLocalizer from 'redux-autoform-utils/lib/localization/numbroLocalizer';
 import ButtonToolbar from './ButtonToolbar';
 import FormOptions from './FormOptions';
 
@@ -116,18 +111,8 @@ class LiveSchemaEditor extends Component {
         return _.find(presets, p => p.name == preset);
     };
 
-    setLocalizers = () => {
-        // setting date localizer
-        reactWidgetsMomentLocalizer(moment);
-        momentLocalizer(moment);
-
-        // setting number localizer
-        numbroLocalizer(numbro);
-    };
-
     render() {
         let { reduxFormActions, preset, metaForm, formOptions, formOptionsActions } = this.props;
-        this.setLocalizers();
 
         return (
             <div className="live-schema-editor">
