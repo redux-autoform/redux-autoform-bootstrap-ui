@@ -1,0 +1,53 @@
+
+.label-mixin{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-weight: @font-weight;
+    font-style: @font-style;
+    font-size: @font-size;
+    font-family: @font-family;
+    vertical-align: baseline;
+    padding-top: @label-padding-top;
+}
+.form-control-mixin{
+    text-rendering: auto;
+    cursor: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    text-align: start;
+    font: @control-inside-font;
+    background-color: white;
+    height:@input-control-height;
+    padding-top: 0px; /*not effect*/
+    padding-bottom: 0px;
+}
+.form-group-minx{
+    .control-label{
+      .label-mixin();
+    }
+    input.form-control, select.form-control {
+      .form-control-mixin();
+    }
+    .input-group{
+      height:@input-control-height - 2px;
+      .input-group-addon{
+        font-family: @font-family;
+        height: @input-control-height - 2px;
+        font-size: @font-size;
+        border-bottom-width: @border-width;
+        border-top-width: @border-width;
+      }
+    }
+}
+
+/*Text Box and select */
+.form-group {
+    div{
+      .form-group-minx();
+    }
+}
