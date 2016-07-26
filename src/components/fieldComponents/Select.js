@@ -39,7 +39,7 @@ class Select extends Component {
     render() {
         let { value, name, displayName, help, error, touched, onChange, onBlur, fieldLayout, options } = this.props;
         let formGroupProps = { error, touched, displayName, name, help, fieldLayout };
-        let selectProps = { value, name, onChange, onBlur, loadOptions: this.fetchItems, valueKey: options.value? options.value : 'value', labelKey: options.label? options.label : 'label' };
+        let selectProps = { value, name, onChange, onBlur: (event) => onBlur(), loadOptions: this.fetchItems, valueKey: options.value? options.value : 'value', labelKey: options.label? options.label : 'label' };
 
         if (!options.url && Array.isArray(options)) {
             return (
