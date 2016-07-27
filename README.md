@@ -13,6 +13,7 @@ Bootstrap UI for [redux-autoform](https://github.com/redux-autoform/redux-autofo
 
 
 - [Introduction](#introduction)
+- [Demo](#demo)
 - [Getting started](#getting-started)
   - [Using](#using)
   - [Add the required third-party components](#add-the-required-third-party-components)
@@ -34,6 +35,10 @@ Bootstrap UI for [redux-autoform](https://github.com/redux-autoform/redux-autofo
 ## Introduction
 
 Bootstrap UI for [redux-autoform](https://github.com/redux-autoform/redux-autoform).
+
+## Demo
+
+[Demo](https://redux-autoform.github.io/redux-autoform-bootstrap-ui/demo.html)
 
 ## Getting started
 
@@ -90,7 +95,7 @@ placeholder | The text that should be displayed as a hint when there's no value.
 addonBefore | The text that should be added-on before the component.
 addonAfter | The text that should be added-on after the component.
 
-[TextBox demo](http://gearz-lab.github.io/redux-autoform/demo.html?preset=componentsTextBox)
+[TextBox demo](https://redux-autoform.github.io/redux-autoform-bootstrap-ui/demo.html?preset=componentsTextBox)
 
 ### TextArea
 
@@ -103,11 +108,11 @@ addonBefore | The text that should be added-on before the component.
 addonAfter | The text that should be added-on after the component.
 rows | The number of rows.
 
-[TextArea demo](http://gearz-lab.github.io/redux-autoform/demo.html?preset=componentsTextArea)
+[TextArea demo](https://redux-autoform.github.io/redux-autoform-bootstrap-ui/demo.html?preset=componentsTextArea)
 
 ### CheckBox
 
-[Checkbox demo](http://gearz-lab.github.io/redux-autoform/demo.html?preset=componentsCheckbox).
+[Checkbox demo](https://redux-autoform.github.io/redux-autoform-bootstrap-ui/demo.html?preset=componentsCheckbox).
 
 ### Select
 
@@ -117,7 +122,7 @@ Metadata | Description
 --- | ---
 options | The options to display. Options are an array of objects with two properties: **value**: The actual value that is stored in the model. **text**: What is displayed to the user
 
-[Select demo](http://gearz-lab.github.io/redux-autoform/demo.html?preset=componentsSelect).
+[Select demo](https://redux-autoform.github.io/redux-autoform-bootstrap-ui/demo.html?preset=componentsSelect).
 
 ### Lookup
 
@@ -127,7 +132,7 @@ Metadata | Description
 --- | ---
 options | The options to display. Options are an array of objects with two properties: **value**: The actual value that is stored in the model. **text**: What is displayed to the user
 
-[Lookup demo](http://gearz-lab.github.io/redux-autoform/demo.html?preset=componentsLookup).
+[Lookup demo](https://redux-autoform.github.io/redux-autoform-bootstrap-ui/demo.html?preset=componentsLookup).
 
 ### DateTimePicker
 ---
@@ -139,7 +144,7 @@ Metadata | Description
 format | Any format supported by [Moment.js](http://momentjs.com/docs/#/parsing/string-format/). Defaults to your locale configuration. Make sure you have it properly configured.  
 
 
-[DateTimePicker demo](http://gearz-lab.github.io/redux-autoform/demo.html?preset=componentsDateTimePicker).
+[DateTimePicker demo](https://redux-autoform.github.io/redux-autoform-bootstrap-ui/demo.html?preset=componentsDateTimePicker).
 
 
 ## Contributing
