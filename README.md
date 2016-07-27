@@ -93,7 +93,6 @@ addonAfter | The text that should be added-on after the component.
 [TextBox demo](http://gearz-lab.github.io/redux-autoform/demo.html?preset=componentsTextBox)
 
 ### TextArea
----
 
 Specific metadata for the `TextBox` component. Common metadata is not listed.
 
@@ -107,12 +106,10 @@ rows | The number of rows.
 [TextArea demo](http://gearz-lab.github.io/redux-autoform/demo.html?preset=componentsTextArea)
 
 ### CheckBox
----
 
 [Checkbox demo](http://gearz-lab.github.io/redux-autoform/demo.html?preset=componentsCheckbox).
 
 ### Select
----
 
 Specific metadata for the `Select` component. Common metadata is not listed.
 
@@ -123,7 +120,6 @@ options | The options to display. Options are an array of objects with two prope
 [Select demo](http://gearz-lab.github.io/redux-autoform/demo.html?preset=componentsSelect).
 
 ### Lookup
----
 
 Specific metadata for the `Lookup` component. Common metadata is not listed.
 
