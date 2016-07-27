@@ -8,11 +8,79 @@ Bootstrap UI for [redux-autoform](https://github.com/redux-autoform/redux-autofo
 
 > Be patient. This documentation is still under construction. Pull-requests are welcome.
 
-Components
----
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-###TextBox###
 
+- [Introduction](#introduction)
+- [Getting started](#getting-started)
+  - [Using](#using)
+  - [Add the required third-party components](#add-the-required-third-party-components)
+  - [Styling](#styling)
+- [Components](#components)
+  - [TextBox](#textbox)
+  - [TextArea](#textarea)
+  - [CheckBox](#checkbox)
+  - [Select](#select)
+  - [Lookup](#lookup)
+  - [DateTimePicker](#datetimepicker)
+  - [Specific metadata for the `DateTimePicker` component. Common metadata is not listed.](#specific-metadata-for-the-datetimepicker-component-common-metadata-is-not-listed)
+- [Contributing](#contributing)
+- [Third party](#third-party)
+- [License](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+## Introduction
+
+Bootstrap UI for [redux-autoform](https://github.com/redux-autoform/redux-autoform).
+
+## Getting started
+
+### Using
+
+First, make sure you are familiar with [redux-autoform](https://github.com/redux-autoform/redux-autoform) and that you've read the [getting started section](https://github.com/redux-autoform/redux-autoform#using).
+
+This project provides component factories for redux-autoform:
+
+```js
+import { EditComponentFactory, DetailsComponentFactory } from 'redux-autoform-bootstrap-ui';
+```
+
+Now all you have to do is to use AutoForm an pass one of the above factories as the `componentFactory` prop of the Autoform component. You can see the AntuForm props [here](https://github.com/redux-autoform/redux-autoform/blob/master/docs-md/documentation.md#autoform).
+
+### Add the required third-party components
+
+Components that are installed automatically:
+
+- [redux-form](https://github.com/erikras/redux-form/).
+- [react-bootstrap](http://react-bootstrap.github.io/).
+
+Components that are need to be installed manually:
+
+- [react-select](https://github.com/JedWatson/react-select).
+- [react-widgets](https://github.com/jquense/react-widgets).
+
+### Styling
+
+- Import `styles.less` file. This file contains infrastructural styling.
+- Import `styles-defaultfactories.less`. This file contains styles related to the components used in the Bootstrap factories. (ToDo: Rename this file to `bootstrap.theme.less`)
+- import the thid-party styles for the components used in the default factories. The example below lists what have to be imported:
+
+**yourstyles.less**:
+
+    @import './node_modules/bootstrap/less/bootstrap.less';
+    @import './node_modules/font-awesome/less/font-awesome.less';
+    @import './node_modules/react-widgets/dist/css/react-widgets.css';
+    @import './node_modules/react-select/dist/react-select.css';
+    @import './node_modules/redux-autoform/lib/less/styles';
+    @import './node_modules/redux-autoform/lib/less/styles-defaultfactories';
+
+Alternatively, if you're using webpack with `css-loader` and `less-loader`, which you probably are, you can just import these less files directly in your JavaScript.
+
+## Components
+
+### TextBox
 
 Specific metadata for the `TextBox` component. Common metadata is not listed.
 
@@ -24,7 +92,7 @@ addonAfter | The text that should be added-on after the component.
 
 [TextBox demo](http://gearz-lab.github.io/redux-autoform/demo.html?preset=componentsTextBox)
 
-###TextArea
+### TextArea
 ---
 
 Specific metadata for the `TextBox` component. Common metadata is not listed.
@@ -38,12 +106,12 @@ rows | The number of rows.
 
 [TextArea demo](http://gearz-lab.github.io/redux-autoform/demo.html?preset=componentsTextArea)
 
-###CheckBox
+### CheckBox
 ---
 
 [Checkbox demo](http://gearz-lab.github.io/redux-autoform/demo.html?preset=componentsCheckbox).
 
-###Select
+### Select
 ---
 
 Specific metadata for the `Select` component. Common metadata is not listed.
@@ -54,7 +122,7 @@ options | The options to display. Options are an array of objects with two prope
 
 [Select demo](http://gearz-lab.github.io/redux-autoform/demo.html?preset=componentsSelect).
 
-###Lookup
+### Lookup
 ---
 
 Specific metadata for the `Lookup` component. Common metadata is not listed.
@@ -65,10 +133,10 @@ options | The options to display. Options are an array of objects with two prope
 
 [Lookup demo](http://gearz-lab.github.io/redux-autoform/demo.html?preset=componentsLookup).
 
-###DateTimePicker
+### DateTimePicker
 ---
 
-###Specific metadata for the `DateTimePicker` component. Common metadata is not listed.
+### Specific metadata for the `DateTimePicker` component. Common metadata is not listed.
 
 Metadata | Description
 --- | ---
@@ -78,12 +146,31 @@ format | Any format supported by [Moment.js](http://momentjs.com/docs/#/parsing/
 [DateTimePicker demo](http://gearz-lab.github.io/redux-autoform/demo.html?preset=componentsDateTimePicker).
 
 
-##Third party
+## Contributing
 
+**Pull-requests are really really welcome**. If you don't know what to contribute with, please check the [issues](https://github.com/redux-autoform/redux-autoform-bootstrap-ui/issues).
+ 
+We'll be more than glad to invite frequent contributors to join the organization.
+If you need help understanding the project, please post an issue and I'll do my best to reply and make sure you understand everything
+you need.
 
-The `DefaultComponentFactory` relies on third-party components. Here's the list:
+In order to make a pull request:
+
+ 1. Fork it.
+ 2. Create your feature-branch git checkout -b your-new-feature-branch
+ 3. Commit your change git commit -am 'Add new feature'
+ 4. Push to the branch git push origin your-new-feature-branch
+ 5. Create new Pull Request with master branch
+
+## Third party
+
+Components this project rely on:
 
  - [redux-form](https://github.com/erikras/redux-form/).
  - [react-bootstrap](http://react-bootstrap.github.io/).
  - [react-select](https://github.com/JedWatson/react-select).
  - [react-widgets](https://github.com/jquense/react-widgets).
+
+License
+---
+`redux-autoform` is [MIT](https://github.com/redux-autoform/redux-autoform-bootstrap-ui/blob/master/LICENSE) licensed.
