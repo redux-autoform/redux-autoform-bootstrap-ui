@@ -1,7 +1,6 @@
 import { EditComponentFactory, DetailsComponentFactory } from '../src/index';
 import { expect } from 'chai';
 
-
 describe("Factory creation", function() {
     it("User requests an edit factory", function(done) {
 
@@ -17,9 +16,7 @@ describe("Factory creation", function() {
             'group': 'FieldGroup'
         };
 
-        let factory = EditComponentFactory;
-
-        expect(factory.defaultFieldComponents).to.be.deep.equal(correctConfig);
+        expect(EditComponentFactory.defaultFieldComponents).to.be.deep.equal(correctConfig);
         done()
     });
 
@@ -36,9 +33,7 @@ describe("Factory creation", function() {
             'group': 'FieldGroup'
         };
 
-        let factory = DetailsComponentFactory;
-
-        expect(factory.defaultFieldComponents).to.be.deep.equal(correctConfig);
+        expect(DetailsComponentFactory.defaultFieldComponents).to.be.deep.equal(correctConfig);
         done()
     })
 });
