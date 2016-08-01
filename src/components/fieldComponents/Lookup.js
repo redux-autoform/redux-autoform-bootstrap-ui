@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import FormGroup from '../FormGroup';
-import ReSelect from 'react-select';
+import Select from 'react-select';
 
 class Lookup extends Component {
     fetchItems = () => {
@@ -20,15 +20,22 @@ class Lookup extends Component {
 
         if (!options.url && Array.isArray(options)) {
             selectProps = { options, value, name, onChange, onBlur: (event) => onBlur() };
-        } else {
-            selectProps = { value, name, onChange, onBlur: (event) => onBlur(), loadOptions: this.fetchItems, valueKey: options.value? options.value : 'value', labelKey: options.label? options.label : 'label' }
-        }
 
-        return (
-            <FormGroup {...formGroupProps}>
-                <ReSelect.Async {...selectProps}/>
-            </FormGroup>
-        )
+            return (
+                <FormGroup {...formGroupProps}>
+                    <Select {...selectProps}/>
+                </FormGroup>
+            )
+
+        } else {
+            selectProps = { value, name, onChange, onBlur: (event) => onBlur(), loadOptions: this.fetchItems, valueKey: options.value? options.value : 'value', labelKey: options.label? options.label : 'label' };
+
+            return (
+                <FormGroup {...formGroupProps}>
+                    <Select.Async {...selectProps}/>
+                </FormGroup>
+            )
+        }
     }
 }
 
