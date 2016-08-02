@@ -8,21 +8,23 @@ class Radio extends Component {
         onChange(event.target.value);
     };
 
-    getOptions = () => {
+    getOptions = (value) => {
         let { options, name, fieldLayout } = this.props;
-        let radioProps = { inline: fieldLayout == 'inline', name };
+
+        // these props don't vary per item
+        let invariantRadioProps = { inline: fieldLayout == 'inline', name, onChange: this.handleChange };
 
         return options.map((item, index) => (
-            <BootstrapRadio key={index} value={item.value} onChange={this.handleChange} {...radioProps}>
+            <BootstrapRadio key={index} value={item.value}  checked={item.value == value} {...invariantRadioProps}>
                 {item.text}
             </BootstrapRadio>
         ))
     };
 
     render() {
-        let { error, touched, displayName, name, help, fieldLayout, innerSize } = this.props;
+        let { error, touched, displayName, name, help, fieldLayout, innerSize, value } = this.props;
         let formGroupProps = { error, touched, displayName, name, help, fieldLayout, innerSize };
-        let options = this.getOptions();
+        let options = this.getOptions(value);
 
         return (
             <FormGroup {...formGroupProps} >
