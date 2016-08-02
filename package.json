@@ -32,7 +32,6 @@
     "react": "^15.1.0",
     "react-bootstrap": "^0.30.0",
     "react-dom": "^15.2.1",
-    "react-select": "^0.9.1",
     "react-select-plus": "^1.0.0-beta14.patch1",
     "react-widgets": "^3.4.2",
     "redux-autoform-utils": "^1.0.3",

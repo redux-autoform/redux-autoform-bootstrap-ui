@@ -39,19 +39,8 @@ class Select extends Component {
     render() {
         let { value, name, displayName, help, error, touched, onChange, onBlur, fieldLayout, options } = this.props;
         let formGroupProps = { error, touched, displayName, name, help, fieldLayout };
-        let selectProps = {
-            value,
-            name,
-            onChange,
-            onBlur: (event) => onBlur(),
-            loadOptions: this.fetchItems,
-            valueKey: options.value? options.value : 'value',
-            labelKey: options.label? options.label : 'label'
-        };
 
         if (options && Array.isArray(options)) {
-            console.info("Render normal select!");
-
             return (
                 <Input componentClass="select" {...this.props}>
                     { this.getOptions() }
@@ -59,12 +48,18 @@ class Select extends Component {
             );
             
         } else if (options.url) {
-            console.info("Async props: " + JSON.stringify(selectProps));
-            console.info("Render async select!");
+            let selectProps = {
+                value,
+                name,
+                onChange,
+                onBlur: (event) => onBlur(),
+                valueKey: options.value? options.value : 'value',
+                labelKey: options.label? options.label : 'label'
+            };
 
             return (
                 <FormGroup {...formGroupProps}>
-                    <ReactSelect.Async {...selectProps}/>
+                    <ReactSelect.Async {...selectProps} loadOptions={this.fetchItems}/>
                 </FormGroup>
             );
         }

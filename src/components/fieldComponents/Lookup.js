@@ -5,7 +5,7 @@ import Select from 'react-select-plus';
 class Lookup extends Component {
     fetchItems = () => {
         const { options } = this.props;
-
+        
         return fetch(options.url)
             .then(response => response.json())
             .then(json => {
@@ -28,11 +28,11 @@ class Lookup extends Component {
             )
 
         } else if (options.url) {
-            selectProps = { value, name, onChange, onBlur: (event) => onBlur(), loadOptions: this.fetchItems, valueKey: options.value? options.value : 'value', labelKey: options.label? options.label : 'label' };
+            selectProps = { value, name, onChange, onBlur: (event) => onBlur(), valueKey: options.value? options.value : 'value', labelKey: options.label? options.label : 'label' };
 
             return (
                 <FormGroup {...formGroupProps}>
-                    <Select.Async {...selectProps}/>
+                    <Select.Async {...selectProps} loadOptions={this.fetchItems}/>
                 </FormGroup>
             )
         }

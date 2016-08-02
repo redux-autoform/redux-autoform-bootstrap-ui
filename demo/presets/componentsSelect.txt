@@ -65,7 +65,7 @@
                     component: "Select",
                     options: {
                         "url": "/api/languages",
-                        "label": "Languages",
+                        "label": "label",
                         "value": "value"
                     }
                 }
