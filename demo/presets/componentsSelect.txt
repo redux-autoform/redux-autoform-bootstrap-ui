@@ -57,6 +57,17 @@
                         { value: 'option2', text: 'Option 2' }
                     ],
                     help: 'This is some help'
+                },
+                {
+                    name: "Languages",
+                    displayName: "Languages",
+                    type: "string",
+                    component: "Select",
+                    options: {
+                        "url": "/api/languages",
+                        "label": "Languages",
+                        "value": "value"
+                    }
                 }
             ]
         }

@@ -1,6 +1,6 @@
 import fs from 'fs';
 import React from 'react';
-import express from 'express';
+import express, { Router } from 'express';
 import path from 'path';
 import webpackConfig from '../webpack/webpack.config.demo.dev';
 import colors from 'colors';
@@ -16,6 +16,19 @@ require.extensions['.html'] = function (module, filename) {
 
 const development = process.env.NODE_ENV !== 'production';
 let app = express();
+let router = new Router();
+
+router.get("/api/languages", (request, response) => {
+    const arr = [
+        "español",
+        "english",
+        "deutsch"
+    ]
+
+    response.status(200).json(arr);
+});
+
+app.use(router);
 
 if (development) {
     app.use(webpackMiddleware(webpackCompiler));

@@ -1,8 +1,8 @@
 import { EditComponentFactory, DetailsComponentFactory } from '../src/index';
 import { expect } from 'chai';
 
-describe("Factory creation", function() {
-    it("User requests an edit factory", function(done) {
+describe("Factory creation", () => {
+    it("User requests an edit factory", (done) => {
 
         let correctConfig = {
             'string': 'TextBox',
@@ -20,7 +20,7 @@ describe("Factory creation", function() {
         done()
     });
 
-    it("User requests an details factory", function(done) {
+    it("User requests a details factory", (done) => {
         let correctConfig = {
             'string': 'Static',
             'array': 'ArrayContainer',
