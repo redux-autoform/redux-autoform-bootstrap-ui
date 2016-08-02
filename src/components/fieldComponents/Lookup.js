@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import FormGroup from '../FormGroup';
-import Select from 'react-select';
+import Select from 'react-select-plus';
 
 class Lookup extends Component {
     fetchItems = () => {
@@ -27,7 +27,7 @@ class Lookup extends Component {
                 </FormGroup>
             )
 
-        } else {
+        } else if (options.url) {
             selectProps = { value, name, onChange, onBlur: (event) => onBlur(), loadOptions: this.fetchItems, valueKey: options.value? options.value : 'value', labelKey: options.label? options.label : 'label' };
 
             return (
@@ -36,6 +36,8 @@ class Lookup extends Component {
                 </FormGroup>
             )
         }
+
+        return false;
     }
 }
 

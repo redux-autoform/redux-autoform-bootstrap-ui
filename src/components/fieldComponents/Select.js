@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import FormGroup from '../FormGroup';
 import Input from '../Input';
-import ReSelect from 'react-select';
+import ReactSelect from 'react-select-plus';
 import fetch from 'isomorphic-fetch';
 
 class Select extends Component {
@@ -39,18 +39,32 @@ class Select extends Component {
     render() {
         let { value, name, displayName, help, error, touched, onChange, onBlur, fieldLayout, options } = this.props;
         let formGroupProps = { error, touched, displayName, name, help, fieldLayout };
-        let selectProps = { value, name, onChange, onBlur: (event) => onBlur(), loadOptions: this.fetchItems, valueKey: options.value? options.value : 'value', labelKey: options.label? options.label : 'label' };
+        let selectProps = {
+            value,
+            name,
+            onChange,
+            onBlur: (event) => onBlur(),
+            loadOptions: this.fetchItems,
+            valueKey: options.value? options.value : 'value',
+            labelKey: options.label? options.label : 'label'
+        };
 
-        if (!options.url && Array.isArray(options)) {
+        if (options && Array.isArray(options)) {
+            console.info("Render normal select!");
+
             return (
                 <Input componentClass="select" {...this.props}>
                     { this.getOptions() }
                 </Input>
             );
+            
         } else if (options.url) {
+            console.info("Async props: " + JSON.stringify(selectProps));
+            console.info("Render async select!");
+
             return (
                 <FormGroup {...formGroupProps}>
-                    <ReSelect.Async {...selectProps}/>
+                    <ReactSelect.Async {...selectProps}/>
                 </FormGroup>
             );
         }
