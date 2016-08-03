@@ -1,15 +1,15 @@
 import ComponentFactory from 'redux-autoform-utils/lib/factory/ComponentFactory';
-import TextBox from '../components/fields/TextBox';
-import Select from '../components/fields/Select';
-import TextArea from '../components/fields/TextArea';
-import Group from '../components/group/Group';
-import ArrayContainer from '../components/fields/ArrayContainer';
-import DateTimePicker from '../components/fields/DateTimePicker';
-import Lookup from '../components/fields/Lookup';
-import Static from '../components/fields/Static';
-import FieldGroup from '../components/fields/FieldGroup';
-import Checkbox from '../components/fields/CheckBox';
-import Radio from '../components/fields/Radio';
+import TextBox from '../components/fieldComponents/TextBox';
+import Select from '../components/fieldComponents/Select';
+import TextArea from '../components/fieldComponents/TextArea';
+import Group from '../components/groupComponents/Group';
+import ArrayContainer from '../components/fieldComponents/ArrayContainer';
+import DateTimePicker from '../components/fieldComponents/DateTimePicker';
+import Lookup from '../components/fieldComponents/Lookup';
+import Static from '../components/fieldComponents/Static';
+import FieldGroup from '../components/fieldComponents/FieldGroup';
+import Checkbox from '../components/fieldComponents/CheckBox';
+import Radio from '../components/fieldComponents/Radio';
 
 class BootstrapFactory extends ComponentFactory {
     constructor(config) {
