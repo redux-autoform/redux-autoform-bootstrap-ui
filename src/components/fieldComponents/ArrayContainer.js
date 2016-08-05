@@ -92,6 +92,7 @@ class ArrayContainer extends Component {
     };
     
     getAllComponents = () => {
+        //TODO: We should replace href calls with Link from react-router
         let components = this.getComponents();
         
         if (components.length) {
@@ -99,7 +100,7 @@ class ArrayContainer extends Component {
         } else {
             return (
                 <Alert bsStyle="warning">
-                    This array is empty. Consider <a href="#" onClick={ this.handleAdd }>adding a new item</a>.
+                    This array is empty. Consider <a href="" onClick={ this.handleAdd }>adding a new item</a>.
                 </Alert>
             );
         }
