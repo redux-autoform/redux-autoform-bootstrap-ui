@@ -10,16 +10,19 @@ class FormGroupStacked extends Component {
         touched: PropTypes.bool,
         displayName: PropTypes.string,
         name: PropTypes.string,
-        help: PropTypes.string
+        help: PropTypes.string,
+        required: PropTypes.bool
     };
     
     getControlLabel = () => {
-        let { displayName, name } = this.props;
+        let { displayName, name, required } = this.props;
 
         if (displayName != undefined) {
+            // this will add a star on fields that are required
+            let requiredStar = required ?  <span className="required-star">*</span> : null;
             return (
                 <ControlLabel>
-                    { displayName || name }
+                    { displayName || name } {requiredStar}
                 </ControlLabel>
             )
         } else {

@@ -11,7 +11,8 @@ class TextBox extends Component {
         error: PropTypes.string,
         addonBefore: PropTypes.string,
         addonAfter: PropTypes.string,
-        fieldLayout: PropTypes.string
+        fieldLayout: PropTypes.string,
+        required: PropTypes.bool
     };
 
     render() {

@@ -11,7 +11,8 @@ class TextArea extends Component {
         error: PropTypes.string,
         addonBefore: PropTypes.string,
         addonAfter: PropTypes.string,
-        rows: PropTypes.number
+        rows: PropTypes.number,
+        required: PropTypes.bool
     };
 
     render() {

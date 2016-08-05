@@ -8,7 +8,8 @@ class FormGroup extends Component {
         touched: PropTypes.bool,
         displayName: PropTypes.string,
         name: PropTypes.string,
-        help: PropTypes.string
+        help: PropTypes.string,
+        required: PropTypes.bool
     };
 
     render() {

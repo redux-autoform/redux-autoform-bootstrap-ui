@@ -10,14 +10,15 @@ class FormGroupInline extends Component {
         touched: PropTypes.bool,
         displayName: PropTypes.string,
         name: PropTypes.string,
-        help: PropTypes.string
+        help: PropTypes.string,
+        required: PropTypes.bool
     };
 
     render() {
-        let { error, touched, displayName, name, children, help, className, innerSize } = this.props;
+        let { error, touched, displayName, name, children, help, className, innerSize, required } = this.props;
         displayName = getDisplayName(displayName, name);
 
-        let controlLabelProps = { displayName };
+        let controlLabelProps = { displayName, required };
         let contentProps = { error, touched, children, help, hasControlLabel: displayName != null, innerSize };
         let formGroupProps = { className };
 
