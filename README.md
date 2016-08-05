@@ -18,6 +18,7 @@ Bootstrap UI for [redux-autoform](https://github.com/redux-autoform/redux-autofo
   - [Using](#using)
   - [Add the required third-party components](#add-the-required-third-party-components)
   - [Styling](#styling)
+  - [Running the demo locally](#running-the-demo-locally)
 - [Components](#components)
   - [TextBox](#textbox)
   - [TextArea](#textarea)
@@ -25,7 +26,6 @@ Bootstrap UI for [redux-autoform](https://github.com/redux-autoform/redux-autofo
   - [Select](#select)
   - [Lookup](#lookup)
   - [DateTimePicker](#datetimepicker)
-  - [Specific metadata for the `DateTimePicker` component. Common metadata is not listed.](#specific-metadata-for-the-datetimepicker-component-common-metadata-is-not-listed)
 - [Contributing](#contributing)
 - [Third party](#third-party)
 - [License](#license)
@@ -143,9 +143,8 @@ options | The options to display. Options are an array of objects with two prope
 [Lookup demo](https://redux-autoform.github.io/redux-autoform-bootstrap-ui/demo.html?preset=componentsLookup).
 
 ### DateTimePicker
----
 
-### Specific metadata for the `DateTimePicker` component. Common metadata is not listed.
+Specific metadata for the `DateTimePicker` component. Common metadata is not listed.
 
 Metadata | Description
 --- | ---
