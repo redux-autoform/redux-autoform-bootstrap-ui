@@ -83,6 +83,14 @@ Components that are need to be installed manually:
 
 Alternatively, if you're using webpack with `css-loader` and `less-loader`, which you probably are, you can just import these less files directly in your JavaScript.
 
+### Running the demo locally
+
+In order to understand how Redux-Autoform and Redux-Autoform-Bootstrap-UI works, a good path is to run the demo locally and see how it works:
+
+    npm run start
+    
+Now the demo should be available here: [http://localhost:4000/](http://localhost:4000/).
+
 ## Components
 
 ### TextBox
