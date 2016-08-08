@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Header from '../Header';
 
-export default class Tabs extends Component {
+export default class NormalForm extends Component {
 	static propTypes = {
 		content: PropTypes.array,
 		title: PropTypes.string
