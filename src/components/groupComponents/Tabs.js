@@ -28,9 +28,9 @@ export default class Tabs extends Component {
 						<Header title={layout.title}/>
 						<Nav bsStyle="tabs" onSelect={this.handleSelect}>
 							{
-								layout.groups.map((item, index) => (
+								layout.groups.map(({ title }, index) => (
 									<NavItem eventKey={index}>
-										{item.title}
+										{title}
 									</NavItem>
 								))
 							}

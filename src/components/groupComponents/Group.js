@@ -92,7 +92,7 @@ class Group extends Component {
             let content = this.getContent();
 
             if (layout.type == 'tabs') {
-                return <TabsForm title={layout.title} content={content}/>;
+                return <TabsForm layout={layout} content={content}/>;
             }
 
             return <NormalForm title={layout.title} content={content}/>
