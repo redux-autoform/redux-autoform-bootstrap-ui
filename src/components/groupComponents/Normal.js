@@ -8,7 +8,7 @@ export default class Tabs extends Component {
 	};
 
 	render() {
-		let { title } = this.props;
+		let { title, content } = this.props;
 		
 		return (
 			<section>

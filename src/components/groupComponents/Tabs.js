@@ -18,7 +18,7 @@ export default class Tabs extends Component {
 	};
 	
 	render() {
-		let { layout } = this.props;
+		let { layout, content } = this.props;
 		let { position } = this.state;
 
 		return (
@@ -36,7 +36,7 @@ export default class Tabs extends Component {
 							}
 						</Nav>
 						<div className="metaform-group-content">
-							{ content[position] }
+							{ content }
 						</div>
 					</div>
 				</div>
