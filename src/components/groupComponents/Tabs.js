@@ -29,14 +29,14 @@ export default class Tabs extends Component {
 						<Nav bsStyle="tabs" onSelect={this.handleSelect}>
 							{
 								layout.groups.map(({ title }, index) => (
-									<NavItem eventKey={index}>
+									<NavItem key={index} eventKey={index}>
 										{title}
 									</NavItem>
 								))
 							}
 						</Nav>
 						<div className="metaform-group-content">
-							{ content }
+							{ content[position] }
 						</div>
 					</div>
 				</div>
