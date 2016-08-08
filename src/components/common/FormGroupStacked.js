@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { FormGroup as BootstrapFormGroup } from 'react-bootstrap';
-import HelpBlock from 'react-bootstrap/lib/HelpBlock';
-import ControlLabel from 'react-bootstrap/lib/ControlLabel';
-import Col from 'react-bootstrap/lib/Col';
+import HelpBlock from '../../../node_modules/react-bootstrap/lib/HelpBlock';
+import ControlLabel from '../../../node_modules/react-bootstrap/lib/ControlLabel';
+import Col from '../../../node_modules/react-bootstrap/lib/Col';
 
 class FormGroupStacked extends Component {
     static propTypes = {

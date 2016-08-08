@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import FormGroup from '../FormGroup';
-import Input from '../Input';
+import FormGroup from '../common/FormGroup';
+import Input from '../common/Input';
 import ReactSelect from 'react-select-plus';
 import fetch from 'isomorphic-fetch';
 

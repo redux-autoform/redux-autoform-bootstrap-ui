@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Input from  '../Input';
+import Input from  '../common/Input';
 
 class TextBox extends Component {
     static propTypes = {

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Header from '../Header';
+import Header from '../common/Header';
 
 export default class NormalForm extends Component {
 	static propTypes = {

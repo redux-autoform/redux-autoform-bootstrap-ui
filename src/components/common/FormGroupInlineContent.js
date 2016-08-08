@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import HelpBlock from 'react-bootstrap/lib/HelpBlock';
-import Col from 'react-bootstrap/lib/Col';
+import HelpBlock from '../../../node_modules/react-bootstrap/lib/HelpBlock';
+import Col from '../../../node_modules/react-bootstrap/lib/Col';
 
 class FormGroupInlineContent extends Component {
     static propTypes = {

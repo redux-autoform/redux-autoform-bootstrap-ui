@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import Glyphicon from 'react-bootstrap/lib/Glyphicon';
-import Button from 'react-bootstrap/lib/Button';
+import Glyphicon from '../../../node_modules/react-bootstrap/lib/Glyphicon';
+import Button from '../../../node_modules/react-bootstrap/lib/Button';
 
 class GlyphButton extends Component {
     static propTypes = {

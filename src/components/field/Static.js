@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FormGroup from '../FormGroup';
+import FormGroup from '../common/FormGroup';
 import {FormControl} from 'react-bootstrap';
 
 class Static extends Component {

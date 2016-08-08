@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import GlyphButton from '../GlyphButton.js';
+import GlyphButton from '../common/GlyphButton.js';
 import Alert from 'react-bootstrap/lib/Alert';
-import FormGroup from '../FormGroup';
-import ArrayContainerItem from '../ArrayContainerItem';
+import FormGroup from '../common/FormGroup';
+import ArrayContainerItem from '../common/ArrayContainerItem';
 
 class ArrayContainer extends Component {
     static propTypes = {
