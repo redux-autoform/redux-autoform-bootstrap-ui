@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import AlertMessage from '../AlertMessage';
-import NormalForm from './Normal';
-import TabsForm from './Tabs';
+import NormalForm from './NormalForm';
+import TabsForm from './TabsForm';
 
 class Group extends Component {
     static propTypes = {

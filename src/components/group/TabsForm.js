@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Nav, NavItem } from 'react-bootstrap';
 import Header from '../Header';
 
-export default class Tabs extends Component {
+export default class TabsForm extends Component {
 	static propTypes = {
 		content: PropTypes.array,
 		layout: PropTypes.object
