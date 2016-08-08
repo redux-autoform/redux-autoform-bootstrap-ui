@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import InputGroup from '../../../node_modules/react-bootstrap/lib/InputGroup';
+import InputGroup from 'react-bootstrap/lib/InputGroup';
 import { FormControl as BootstrapFormControl } from 'react-bootstrap';
 
 class FormControl extends Component {

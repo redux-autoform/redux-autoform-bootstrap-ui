@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import Glyphicon from '../../../node_modules/react-bootstrap/lib/Glyphicon';
-import MenuItem from '../../../node_modules/react-bootstrap/lib/MenuItem';
-import Dropdown from '../../../node_modules/react-bootstrap/lib/Dropdown';
+import Glyphicon from 'react-bootstrap/lib/Glyphicon';
+import MenuItem from 'react-bootstrap/lib/MenuItem';
+import Dropdown from 'react-bootstrap/lib/Dropdown';
 
 class ArrayContainerItem extends Component {
     static propTypes = {
