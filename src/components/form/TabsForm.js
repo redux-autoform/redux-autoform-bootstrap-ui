@@ -12,7 +12,6 @@ export default class TabsForm extends Component {
 	};
 
 	handleSelect = (eventKey) => {
-		event.preventDefault();
 		this.setState({ position: eventKey });
 	};
 	
