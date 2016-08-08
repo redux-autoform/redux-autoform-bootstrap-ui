@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { Nav, NavItem } from 'react-bootstrap';
-import Header from '../Header';
 
 export default class TabsForm extends Component {
 	static propTypes = {
@@ -25,7 +24,6 @@ export default class TabsForm extends Component {
 			<section>
 				<div className='row'>
 					<div className="metaform-group">
-						<Header title={layout.title}/>
 						<Nav bsStyle="tabs" onSelect={this.handleSelect}>
 							{
 								layout.groups.map(({ title }, index) => (
