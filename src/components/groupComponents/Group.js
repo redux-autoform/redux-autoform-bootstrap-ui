@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Alert } from 'react-bootstrap';
+import { Alert, Nav, NavItem } from 'react-bootstrap';
 
 class Group extends Component {
     static propTypes = {
@@ -96,27 +96,57 @@ class Group extends Component {
         }
     };
 
+    handleSelect = (eventKey) => {
+        event.preventDefault();
+    };
+
     render() {
         
         // the passed in layout can contain either fields or groups.
         // in case it contains 'fields', we're gonna render each of the fields.
-        // in case it contains 'groups', we're gonna render render each group, passing the fields as a parameter
+        // in case it contains 'groups', we're gonna render each group, passing the fields as a parameter
         try {
             let content = this.getContent();
             let header = this.getHeader();
+
+            let { layout } = this.props;
             
-            return (
-                <section>
-                    <div className='row'>
-                        <div className="metaform-group">
-                            { header }
-                            <div className="metaform-group-content">
-                                { content }
+            if (layout.type == "tabs") {
+                return(
+                    <section>
+                        <div className='row'>
+                            <div className="metaform-group">
+                                { header }
+                                <Nav bsStyle="tabs" onSelect={this.handleSelect}>
+                                    {
+                                        layout.groups.map((item, index) => (
+                                            <NavItem eventKey={index}>
+                                                {item.title}
+                                            </NavItem>
+                                        ))
+                                    }
+                                </Nav>
+                                <div className="metaform-group-content">
+                                    { content }
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </section>
-            );
+                    </section>
+                );
+            } else {
+                return (
+                    <section>
+                        <div className='row'>
+                            <div className="metaform-group">
+                                { header }
+                                <div className="metaform-group-content">
+                                    { content }
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                );
+            }
             
         } catch (ex) {
             return (
