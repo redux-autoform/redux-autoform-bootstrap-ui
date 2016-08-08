@@ -3,8 +3,8 @@ import Header from '../Header';
 
 export default class NormalForm extends Component {
 	static propTypes = {
-		content: PropTypes.array,
-		title: PropTypes.string
+		content: PropTypes.array.isRequired,
+		title: PropTypes.string.isRequired
 	};
 
 	render() {

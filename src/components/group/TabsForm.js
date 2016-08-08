@@ -3,8 +3,8 @@ import { Nav, NavItem } from 'react-bootstrap';
 
 export default class TabsForm extends Component {
 	static propTypes = {
-		content: PropTypes.array,
-		layout: PropTypes.object
+		content: PropTypes.array.isRequired,
+		layout: PropTypes.object.isRequired
 	};
 
 	state = {
