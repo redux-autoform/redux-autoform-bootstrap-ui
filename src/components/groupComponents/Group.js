@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import { Alert, Nav, NavItem } from 'react-bootstrap';
+import AlertMessage from '../AlertMessage';
+import NormalForm from './Normal';
+import TabsForm from './Tabs';
 
 class Group extends Component {
     static propTypes = {
@@ -79,86 +81,23 @@ class Group extends Component {
             );
         });
     };
-    
-    getHeader = () => {
-        let { layout } = this.props;
-        
-        if (layout.title) {
-            return (
-                <header className="metaform-group-header">
-                    <span className="metaform-group-title">
-                        { layout.title }
-                    </span>
-                </header>    
-            );
-        } else {
-            return null;
-        }
-    };
-
-    handleSelect = (eventKey) => {
-        event.preventDefault();
-    };
 
     render() {
-        
+        let { layout } = this.props;
+
         // the passed in layout can contain either fields or groups.
         // in case it contains 'fields', we're gonna render each of the fields.
         // in case it contains 'groups', we're gonna render each group, passing the fields as a parameter
         try {
             let content = this.getContent();
-            let header = this.getHeader();
 
-            let { layout } = this.props;
-            
-            if (layout.type == "tabs") {
-                return(
-                    <section>
-                        <div className='row'>
-                            <div className="metaform-group">
-                                { header }
-                                <Nav bsStyle="tabs" onSelect={this.handleSelect}>
-                                    {
-                                        layout.groups.map((item, index) => (
-                                            <NavItem eventKey={index}>
-                                                {item.title}
-                                            </NavItem>
-                                        ))
-                                    }
-                                </Nav>
-                                <div className="metaform-group-content">
-                                    { content }
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                );
-            } else {
-                return (
-                    <section>
-                        <div className='row'>
-                            <div className="metaform-group">
-                                { header }
-                                <div className="metaform-group-content">
-                                    { content }
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                );
+            if (layout.type == 'tabs') {
+                return <TabsForm title={layout.title} content={content}/>;
             }
-            
+
+            return <NormalForm title={layout.title} content={content}/>
         } catch (ex) {
-            return (
-                <Alert bsStyle='danger'>
-                    <h4>
-                        Could not render the MetaFormGroup component. The schema is not valid.
-                    </h4>
-                    <p>Detailed information:
-                        <b>{ ex.message }</b>
-                    </p>
-                </Alert>
-            )
+            return <AlertMessage error={ex}/>
         }
     }
 }
