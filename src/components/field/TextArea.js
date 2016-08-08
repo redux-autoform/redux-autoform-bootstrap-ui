@@ -15,9 +15,7 @@ class TextArea extends Component {
     };
 
     render() {
-        let { rows } = this.props;
-
-        return <Input componentClass="textarea" rows={rows} {...this.props}/>;
+        return <Input componentClass="textarea" {...this.props}/>;
     }
 }
 

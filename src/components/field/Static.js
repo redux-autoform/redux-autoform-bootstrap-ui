@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import FormGroup from '../common/FormGroup';
-import {FormControl} from 'react-bootstrap';
+import { FormControl } from 'react-bootstrap';
 
 class Static extends Component {
     render() {
