@@ -91,8 +91,13 @@ class Group extends Component {
         try {
             let content = this.getContent();
 
-            if (layout.type == 'tabs') {
-                return <TabsForm layout={layout} content={content}/>;
+            if (layout.type) {
+                switch (layout.type) {
+                    case 'tabs':
+                        return <TabsForm layout={layout} content={content}/>;
+                    default:
+                        return <NormalForm title={layout.title} content={content}/>
+                }
             }
 
             return <NormalForm title={layout.title} content={content}/>
