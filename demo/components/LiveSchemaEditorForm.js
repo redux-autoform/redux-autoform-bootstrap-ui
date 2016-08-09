@@ -18,9 +18,19 @@ class LiveSchemaEditorForm extends Component {
         ));  
     };
 
+    getNewProps = (prop) => {
+        const {initialValue, autofill, onUpdate, valid, invalid, dirty, pristine, active, touched, visited, autofilled, ...rest} = prop;
+        
+        return rest;
+    };
+
     render() {
         const { fields: {entityName, layoutName, schema}, selectedPreset, formOptionActions } = this.props;
-
+        const newLayout = this.getNewProps(layoutName);
+        const newEntity = this.getNewProps(entityName);
+        const newSchema = this.getNewProps(schema);
+        
+        console.log(JSON.stringify(newLayout))
         return <div>
             <div className='row'>
                 <div className="col-md-12">
@@ -44,7 +54,7 @@ class LiveSchemaEditorForm extends Component {
                         <ControlLabel>
                             Entity name
                         </ControlLabel>
-                        <FormControl type="text" value="" placeholder="Enter text" { ... entityName }/>
+                        <FormControl type="text" value="" placeholder="Enter text" {...newEntity}/>
                         <FormControl.Feedback />
                     </FormGroup>
                 </div>
@@ -53,7 +63,7 @@ class LiveSchemaEditorForm extends Component {
                         <ControlLabel>
                             Layout name
                         </ControlLabel>
-                        <FormControl type="text" value="" placeholder="Enter text" { ...layoutName }/>
+                        <FormControl type="text" value="" placeholder="Enter text" {...newLayout}/>
                         <FormControl.Feedback />
                     </FormGroup>
                 </div>
@@ -64,7 +74,7 @@ class LiveSchemaEditorForm extends Component {
                         <ControlLabel>
                             Schema
                         </ControlLabel>
-                        <CodeEditor { ...schema} />
+                        <CodeEditor { ...newSchema}/>
                         <FormControl.Feedback />
                     </FormGroup>
                 </div>
