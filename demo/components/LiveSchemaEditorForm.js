@@ -30,7 +30,6 @@ class LiveSchemaEditorForm extends Component {
         const newEntity = this.getNewProps(entityName);
         const newSchema = this.getNewProps(schema);
         
-        console.log(JSON.stringify(newLayout))
         return <div>
             <div className='row'>
                 <div className="col-md-12">
