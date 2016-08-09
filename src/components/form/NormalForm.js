@@ -4,7 +4,7 @@ import Header from '../common/Header';
 export default class NormalForm extends Component {
 	static propTypes = {
 		content: PropTypes.array.isRequired,
-		title: PropTypes.string.isRequired
+		title: PropTypes.string
 	};
 
 	render() {

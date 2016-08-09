@@ -3,6 +3,7 @@ import TextBox from '../components/field/TextBox';
 import Select from '../components/field/Select';
 import TextArea from '../components/field/TextArea';
 import Group from '../components/group/Group';
+import TabGroup from '../components/group/TabGroup';
 import ArrayContainer from '../components/field/ArrayContainer';
 import DateTimePicker from '../components/field/DateTimePicker';
 import Lookup from '../components/field/Lookup';
@@ -31,6 +32,7 @@ class BootstrapFactory extends ComponentFactory {
         this.registerFieldComponent('FieldGroup', ['group'], FieldGroup);
 
         this.registerGroupComponent('Group', Group);
+        this.registerGroupComponent('TabGroup', TabGroup);
     };
     
     setDefaultConfiguration = (config) => {

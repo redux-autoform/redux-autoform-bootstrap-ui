@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import AlertMessage from '../common/AlertMessage';
 import NormalForm from './../form/NormalForm';
-import TabsForm from './../form/TabsForm';
 
 class Group extends Component {
     static propTypes = {
@@ -89,18 +88,7 @@ class Group extends Component {
         // in case it contains 'fields', we're gonna render each of the fields.
         // in case it contains 'groups', we're gonna render each group, passing the fields as a parameter
         try {
-            let content = this.getContent();
-
-            if (layout.type) {
-                switch (layout.type) {
-                    case 'tabs':
-                        return <TabsForm layout={layout} content={content}/>;
-                    default:
-                        return <NormalForm title={layout.title} content={content}/>
-                }
-            }
-
-            return <NormalForm title={layout.title} content={content}/>
+            return <NormalForm title={layout.title} content={this.getContent()}/>
         } catch (ex) {
             return <AlertMessage error={ex}/>
         }
