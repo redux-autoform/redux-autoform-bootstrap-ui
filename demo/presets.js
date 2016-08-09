@@ -116,5 +116,13 @@ export default [
         layoutName: 'edit',
         formTitle: 'Edit contact',
         schema: require('./presets/componentsFieldGroup.txt')
+    },
+    {
+        name: 'Layout Tabs',
+        displayName: 'Layout Tabs',
+        entityName: 'contact',
+        layoutName: 'edit',
+        formTitle: 'Edit contact',
+        schema: require('./presets/layoutsTabs.txt')
     }
 ]

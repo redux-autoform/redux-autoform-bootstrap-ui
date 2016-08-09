@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import FormGroup from '../FormGroup';
+import FormGroup from '../common/FormGroup';
 import Select from 'react-select-plus';
 
 class Lookup extends Component {

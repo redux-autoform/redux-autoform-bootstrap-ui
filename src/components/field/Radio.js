@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Radio as BootstrapRadio } from 'react-bootstrap';
-import FormGroup from '../FormGroup';
+import FormGroup from '../common/FormGroup';
 
 class Radio extends Component {
     handleChange = (event) => {

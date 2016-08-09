@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import FormGroup from '../FormGroup';
+import FormGroup from '../common/FormGroup';
 
 class FieldGroup extends Component {
     static propTypes = {

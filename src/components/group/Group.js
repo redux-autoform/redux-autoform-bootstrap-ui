@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import { Alert } from 'react-bootstrap';
+import AlertMessage from '../common/AlertMessage';
+import NormalForm from './../form/NormalForm';
+import TabsForm from './../form/TabsForm';
 
 class Group extends Component {
     static propTypes = {
@@ -79,56 +81,28 @@ class Group extends Component {
             );
         });
     };
-    
-    getHeader = () => {
-        let { layout } = this.props;
-        
-        if (layout.title) {
-            return (
-                <header className="metaform-group-header">
-                    <span className="metaform-group-title">
-                        { layout.title }
-                    </span>
-                </header>    
-            );
-        } else {
-            return null;
-        }
-    };
 
     render() {
-        
+        let { layout } = this.props;
+
         // the passed in layout can contain either fields or groups.
         // in case it contains 'fields', we're gonna render each of the fields.
-        // in case it contains 'groups', we're gonna render render each group, passing the fields as a parameter
+        // in case it contains 'groups', we're gonna render each group, passing the fields as a parameter
         try {
             let content = this.getContent();
-            let header = this.getHeader();
-            
-            return (
-                <section>
-                    <div className='row'>
-                        <div className="metaform-group">
-                            { header }
-                            <div className="metaform-group-content">
-                                { content }
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            );
-            
+
+            if (layout.type) {
+                switch (layout.type) {
+                    case 'tabs':
+                        return <TabsForm layout={layout} content={content}/>;
+                    default:
+                        return <NormalForm title={layout.title} content={content}/>
+                }
+            }
+
+            return <NormalForm title={layout.title} content={content}/>
         } catch (ex) {
-            return (
-                <Alert bsStyle='danger'>
-                    <h4>
-                        Could not render the MetaFormGroup component. The schema is not valid.
-                    </h4>
-                    <p>Detailed information:
-                        <b>{ ex.message }</b>
-                    </p>
-                </Alert>
-            )
+            return <AlertMessage error={ex}/>
         }
     }
 }
