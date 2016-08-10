@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import DropZone from 'react-dropzone';
+import DropZone from '../common/DropZone';
 
 export default class FileUpload extends Component {
 	static propTypes = {
