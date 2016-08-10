@@ -22,6 +22,14 @@ export default [
         schema: require('./presets/layouts.txt')
     },
     {
+        name: 'layoutsTabs',
+        displayName: 'Layouts - Tabs (Experimental)',
+        entityName: 'contact',
+        layoutName: 'edit',
+        formTitle: 'Edit contact',
+        schema: require('./presets/layoutsTabs.txt')
+    },
+    {
         name: 'schemaTypeSimple',
         displayName: 'Schema types - Simple',
         entityName: '',
@@ -116,13 +124,5 @@ export default [
         layoutName: 'edit',
         formTitle: 'Edit contact',
         schema: require('./presets/componentsFieldGroup.txt')
-    },
-    {
-        name: 'Layout Tabs',
-        displayName: 'Layout Tabs',
-        entityName: 'contact',
-        layoutName: 'edit',
-        formTitle: 'Edit contact',
-        schema: require('./presets/layoutsTabs.txt')
     }
 ]
