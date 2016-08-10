@@ -18,17 +18,31 @@ export default class FileUploadItem extends Component {
 	render() {
 		let { file, height, width } = this.props;
 
+		const imgStyle = {
+			display: 'block',
+			marginLeft: 'auto',
+			marginRight: 'auto'
+		};
+
 		let image = null;
 
 		if (file.type.match(/image/)) {
-			image = <img height={height} width={width} src={file.preview}/>;
+			image = <img height={height} width={width} src={file.preview} style={imgStyle}/>;
 		}
 
 		return (
 			<Col xs={4} md={4}>
-				{image}
-				<p>{file.name}</p>
-				<p>{filesize(file.size)}</p>
+				<div style={{backgroundColor: "#e0e0e0"}}>
+					<div>
+						{image}
+					</div>
+					<div>
+						<p style={{textAlign: 'center'}}>
+							<a>{file.name}</a>
+						</p>
+						<p style={{textAlign: 'right'}}>{filesize(file.size)}</p>
+					</div>
+				</div>
 			</Col>
 		);
 	}
