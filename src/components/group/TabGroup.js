@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import AlertMessage from '../common/AlertMessage';
 import BaseGroup from './BaseGroup';
-import TabsForm from '../form/TabsForm';
+import { Nav, NavItem } from 'react-bootstrap';
 
 class TabGroup extends BaseGroup {
 	static propTypes = {
@@ -11,18 +10,41 @@ class TabGroup extends BaseGroup {
 		componentFactory: PropTypes.object.isRequired
 	};
 
+	state = {
+		position: 0
+	};
+
+	handleSelect = (eventKey) => {
+		this.setState({ position: eventKey });
+	};
+
 	render() {
 		let { layout } = this.props;
+		let position = this.state.position;
+		let content = this.getContent();
 
-		// the passed in layout can contain either fields or groups.
-		// in case it contains 'fields', we're gonna render each of the fields.
-		// in case it contains 'groups', we're gonna render each group, passing the fields as a parameter
-		try {
-			return <TabsForm layout={layout} content={this.getContent()}/>;
-		} catch (ex) {
-			return <AlertMessage error={ex}/>
-		}
+		return (
+			<section>
+				<div className='row'>
+					<div className="metaform-group">
+						<Nav bsStyle="tabs" onSelect={this.handleSelect}>
+							{
+								layout.groups.map(({ title }, index) => (
+									<NavItem key={index} eventKey={index}>
+										{title}
+									</NavItem>
+								))
+							}
+						</Nav>
+						<div className="metaform-group-content">
+							{ content[position] }
+						</div>
+					</div>
+				</div>
+			</section>
+		);
 	}
+
 }
 
 export default TabGroup;
