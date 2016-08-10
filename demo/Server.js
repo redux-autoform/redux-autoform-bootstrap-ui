@@ -8,6 +8,20 @@ import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpack from 'webpack';
 
+import multer from 'multer';
+
+const storage = multer.diskStorage({
+    destination: function(request, file, callback) {
+        callback(null, "./demo/uploads");
+    },
+    filename: function(request, file, callback) {
+        callback(null, file.originalname + '-' + Date.now())
+    }
+});
+
+const upload = multer({storage});
+
+
 const webpackCompiler = webpack(webpackConfig);
 
 require.extensions['.html'] = function (module, filename) {
@@ -15,7 +29,9 @@ require.extensions['.html'] = function (module, filename) {
 };
 
 const development = process.env.NODE_ENV !== 'production';
+
 let app = express();
+
 let router = new Router();
 
 router.get("/api/languages", (request, response) => {
@@ -35,6 +51,18 @@ router.get("/api/languages", (request, response) => {
     ];
 
     response.status(200).json(arr);
+});
+
+router.post("/upload", upload.array("fileData"), (request, response) => {
+   let files = request.files;
+
+
+   files.forEach(file => {
+       console.log(JSON.stringify(file));
+   });
+
+   response.end();
+
 });
 
 app.use(router);

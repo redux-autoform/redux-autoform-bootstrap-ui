@@ -31,7 +31,7 @@ export default class FileUpload extends Component {
 		let fileData = new FormData();
 
 		files.forEach((file) => {
-			fileData.append(file.name, file);
+			fileData.append("fileData", file);
 		});
 
 		fetch(url, {
