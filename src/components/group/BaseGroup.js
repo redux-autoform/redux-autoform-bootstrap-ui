@@ -1,6 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import AlertMessage from '../common/AlertMessage';
-import NormalForm from './../form/NormalForm';
 
 class BaseGroup extends Component {
     static propTypes = {
