@@ -1,5 +1,4 @@
-import React, { Component, PropTypes } from 'react';
-import Header from '../common/Header';
+import React, {Component, PropTypes} from 'react';
 import BaseGroup from './BaseGroup';
 
 class Group extends BaseGroup {
@@ -12,14 +11,24 @@ class Group extends BaseGroup {
 
     render() {
 
-        let { layout } = this.props;
+        let {layout} = this.props;
         let content = this.getContent();
+
+        // Group header
+        let header = layout.title
+            ? (
+            <header className="metaform-group-header">
+                <span className="metaform-group-title">
+                    {layout.title}
+                </span>
+            </header>
+        ) : null;
 
         return (
             <section>
                 <div className='row'>
                     <div className="metaform-group">
-                        <Header title={layout.title}/>
+                        { header }
                         <div className="metaform-group-content">
                             { content }
                         </div>
