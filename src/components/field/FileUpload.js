@@ -11,13 +11,8 @@ export default class FileUpload extends Component {
 	};
 
 	onDrop = (files) => {
-		files.forEach(file => {
-			console.info("This is the name: " + file.name);
-			console.info("This is the preview: " + file.preview);
-		});
-
-		console.info("This are the files: " + JSON.stringify(files));
-		this.setState({ files: files });
+		let fileArray = [...this.state.files, ...files];
+		this.setState({ files: fileArray });
 	};
 
 	render() {
