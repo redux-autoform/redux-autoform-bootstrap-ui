@@ -9,11 +9,11 @@ const FileUploadItem = ({ file, height, width }) => {
 	}
 
 	return (
-		<div>
+		<li>
 			{image}
 			<p>{file.name}</p>
 			<p>{filesize(file.size)}</p>
-		</div>
+		</li>
 	);
 };
 

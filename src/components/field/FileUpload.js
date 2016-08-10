@@ -51,12 +51,12 @@ export default class FileUpload extends Component {
 						<div>
 							Try dropping some files here, or click to select files to upload.
 						</div>
-						<div>{
+						<ul>{
 							files.map((file, index) => (
 								<FileInfo key={index} file={file}/>
 							))
 						}
-						</div>
+						</ul>
 					</DropZone>
 					<div>
 						<GlyphButton text="Upload" onClick={this.onClick}/>
