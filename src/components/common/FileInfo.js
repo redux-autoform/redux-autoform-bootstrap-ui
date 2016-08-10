@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Col } from 'react-bootstrap';
 import filesize from 'filesize';
 
 const FileUploadItem = ({ file, height, width }) => {
@@ -9,11 +10,11 @@ const FileUploadItem = ({ file, height, width }) => {
 	}
 
 	return (
-		<li>
+		<Col xs={4} md={4}>
 			{image}
 			<p>{file.name}</p>
 			<p>{filesize(file.size)}</p>
-		</li>
+		</Col>
 	);
 };
 
@@ -24,8 +25,8 @@ FileUploadItem.propTypes = {
 };
 
 FileUploadItem.defaultProps = {
-	height: "50px",
-	width: "50px"
+	height: "150px",
+	width: "150px"
 };
 
 export default FileUploadItem;

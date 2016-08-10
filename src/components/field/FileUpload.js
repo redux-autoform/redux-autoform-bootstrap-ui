@@ -43,42 +43,50 @@ export default class FileUpload extends Component {
 		let { files } = this.state;
 
 		//TODO Think how to manage styles correctly
-		const styles = {
-			titleDiv: {
-				marginTop: "6px",
-				color: "#616161"
-			},
-			div: {
-				marginTop: "6px"
-			},
-			p: {
-				textAlign: "center",
-				color: "#616161"
-			}
+		const attachmentStyle = {
+			marginTop: "6px",
+			color: "#616161"
 		};
+
+		const messageContainerStyle = {
+			marginTop: "6px"
+		};
+
+		const messageStyle = {
+			textAlign: "center",
+			color: "#616161"
+		};
+
+		let rowStyle = {};
+
+		if (files) {
+			rowStyle = {
+				padding: "10px"
+			}
+		}
 
 		return (
 			<div>
 				<Row>
 					<Col xs={2} md={2}>
-						<div style={styles.titleDiv}>
+						<div style={attachmentStyle}>
 							<b>Attachment</b>
 						</div>
 					</Col>
 					<Col xs={10} md={10}>
 						<DropZone onDrop={this.onDrop}>
-							<div style={styles.div}>
-								<p style={styles.p}>
+							<div style={messageContainerStyle}>
+								<p style={messageStyle}>
 									<Glyphicon glyph="cloud-upload"/> Drop files to attach, or <a>browse</a>
 								</p>
 							</div>
-							<div>
-								<ul>{
+							<div style={rowStyle}>
+								<Row>{
 									files.map((file, index) => (
 										<FileInfo key={index} file={file}/>
 									))
 								}
-								</ul>
+								</Row>
 							</div>
 						</DropZone>
 					</Col>
