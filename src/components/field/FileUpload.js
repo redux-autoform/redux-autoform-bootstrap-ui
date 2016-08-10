@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import fetch from 'isomorphic-fetch';
 import DropZone from 'react-dropzone';
 
 export default class FileUpload extends Component {
@@ -7,13 +6,18 @@ export default class FileUpload extends Component {
 		url: PropTypes.string.isRequired
 	};
 
-	onDrop = (files) => {
-		const { url } = this.props;
+	state = {
+		files: []
+	};
 
-		fetch()
-			.then(response => response.json())
-			.then()
-			.catch()
+	onDrop = (files) => {
+		files.forEach(file => {
+			console.info("This is the name: " + file.name);
+			console.info("This is the preview: " + file.preview);
+		});
+
+		console.info("This are the files: " + JSON.stringify(files));
+		this.setState({ files: files });
 	};
 
 	render() {
