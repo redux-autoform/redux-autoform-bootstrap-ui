@@ -59,7 +59,7 @@ export default class FileUpload extends Component {
 
 		let rowStyle = {};
 
-		//TODO check row 
+		//TODO check row
 		if (files) {
 			rowStyle = {
 				padding: "10px"

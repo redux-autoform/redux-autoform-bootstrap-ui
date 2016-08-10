@@ -30,17 +30,35 @@ export default class FileUploadItem extends Component {
 			image = <img height={height} width={width} src={file.preview} style={imgStyle}/>;
 		}
 
+		//TODO truncate fileName to keep the Col in the same height
+		const containerStyle = {
+			backgroundColor: "#e0e0e0",
+			paddingTop: "10px",
+			paddingBottom: "10px"
+		};
+
+		const fileNameStyle = {
+			textAlign: 'center'
+		};
+
+		const fileSizeStyle = {
+			textAlign: 'right',
+			paddingRight: "10px"
+		};
+
 		return (
 			<Col xs={4} md={4}>
-				<div style={{backgroundColor: "#e0e0e0"}}>
+				<div style={containerStyle}>
 					<div>
 						{image}
 					</div>
 					<div>
-						<p style={{textAlign: 'center'}}>
+						<p style={fileNameStyle}>
 							<a>{file.name}</a>
 						</p>
-						<p style={{textAlign: 'right'}}>{filesize(file.size)}</p>
+						<p style={fileSizeStyle}>
+							{filesize(file.size)}
+						</p>
 					</div>
 				</div>
 			</Col>
