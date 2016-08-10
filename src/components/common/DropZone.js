@@ -191,6 +191,7 @@ export default class DropZone extends Component {
 
 		if (!className && !style && !activeStyle && !rejectStyle) {
 			style = {
+				width: 'auto',
 				borderWidth: 1,
 				borderColor: '#bdbdbd',
 				borderStyle: 'dashed',
