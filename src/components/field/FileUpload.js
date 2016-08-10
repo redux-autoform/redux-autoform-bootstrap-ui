@@ -43,6 +43,7 @@ export default class FileUpload extends Component {
 	render() {
 		let { files } = this.state;
 
+		console.log("URL ---->> " + this.props.url);
 		return (
 			<div>
 				<label>Files</label>
@@ -59,7 +60,9 @@ export default class FileUpload extends Component {
 						</div>
 					</DropZone>
 					<div>
-						<GlyphButton text="Upload" onClick={this.onClick}/>
+						<button onClick={this.onClick}>
+							Upload
+						</button>
 					</div>
 				</div>
 			</div>
