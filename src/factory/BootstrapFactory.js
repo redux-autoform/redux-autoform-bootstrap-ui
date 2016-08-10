@@ -13,6 +13,8 @@ import Checkbox from '../components/field/CheckBox';
 import Radio from '../components/field/Radio';
 import FileUpload from '../components/field/FileUpload';
 
+import Root from '../components/common/Root';
+
 class BootstrapFactory extends ComponentFactory {
     constructor(config) {
         super();
@@ -43,6 +45,10 @@ class BootstrapFactory extends ComponentFactory {
         this.setDefaultFieldComponents(config);
         this.setDefaultGroupComponent('Group');
     };
+
+    getRoot = () => {
+        return Root;
+    }
 
 }
 
