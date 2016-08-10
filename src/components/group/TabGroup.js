@@ -1,10 +1,13 @@
 import React, { Component, PropTypes } from 'react';
+import BaseGroup from './BaseGroup';
 import { Nav, NavItem } from 'react-bootstrap';
 
-export default class TabsForm extends Component {
+class TabGroup extends BaseGroup {
 	static propTypes = {
-		content: PropTypes.array.isRequired,
-		layout: PropTypes.object.isRequired
+		component: PropTypes.string,
+		fields: PropTypes.array.isRequired,
+		layout: PropTypes.object.isRequired,
+		componentFactory: PropTypes.object.isRequired
 	};
 
 	state = {
@@ -14,10 +17,11 @@ export default class TabsForm extends Component {
 	handleSelect = (eventKey) => {
 		this.setState({ position: eventKey });
 	};
-	
+
 	render() {
-		let { layout, content } = this.props;
-		let { position } = this.state;
+		let { layout } = this.props;
+		let position = this.state.position;
+		let content = this.getContent();
 
 		return (
 			<section>
@@ -40,4 +44,7 @@ export default class TabsForm extends Component {
 			</section>
 		);
 	}
+
 }
+
+export default TabGroup;
