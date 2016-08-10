@@ -46,16 +46,14 @@ export default class FileUpload extends Component {
 			<div>
 				<Row>
 					<Col xs={2} md={2}>
-						<div>
-							<p>
-								<b>Attachments</b>
-							</p>
+						<div style={{marginTop: "6px", color: "#616161"}}>
+							<b>Attachment</b>
 						</div>
 					</Col>
 					<Col xs={10} md={10}>
 						<DropZone onDrop={this.onDrop}>
-							<div>
-								<p style={{ textAlign: "center" }}>
+							<div style={{marginTop: "6px"}}>
+								<p style={{textAlign: "center", color: "#616161"}}>
 									<Glyphicon glyph="cloud-upload"/> Drop files to attach, or <a>browse</a>
 								</p>
 							</div>
@@ -70,11 +68,9 @@ export default class FileUpload extends Component {
 						</DropZone>
 					</Col>
 				</Row>
-				<div>
-					<span>
-                        <GlyphButton type="submit" glyph="cloud-upload" text="Upload" bsSize="primary" onClick={this.onClick}/>
-                    </span>
-				</div>
+				<Col>
+					<GlyphButton type="submit" glyph="cloud-upload" text="Upload" bsSize="primary" onClick={this.onClick}/>
+				</Col>
 			</div>
 		);
 	}
