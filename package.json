@@ -30,6 +30,7 @@
   "dependencies": {
     "attr-accept": "^1.0.3",
     "bootstrap": "^3.3.6",
+    "filesize": "^3.3.0",
     "font-awesome": "^4.6.3",
     "isomorphic-fetch": "^2.2.1",
     "react": "^15.1.0",

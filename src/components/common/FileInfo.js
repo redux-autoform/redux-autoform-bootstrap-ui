@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react';
+import filesize from 'filesize';
 
 const FileUploadItem = ({ file, height, width }) => {
 	let image = null;
 
-	if (file.type.match(/\.(jpg|jpeg|png|gif)$/)) {
+	if (file.type.match(/image/)) {
 		image = <img height={height} width={width} src={file.preview}/>;
 	}
 
@@ -11,7 +12,7 @@ const FileUploadItem = ({ file, height, width }) => {
 		<div>
 			{image}
 			<p>{file.name}</p>
-			<p>{file.size}</p>
+			<p>{filesize(file.size)}</p>
 		</div>
 	);
 };

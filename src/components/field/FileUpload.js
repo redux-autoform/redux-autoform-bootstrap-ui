@@ -16,7 +16,7 @@ export default class FileUpload extends Component {
 
 	onDrop = (files) => {
 		//TODO Check file and size. Avoid duplicated files
-		let fileArray = [...this.state.files, ...files];
+		let fileArray = [...files, ...this.state.files];
 
 		this.setState({ files: fileArray });
 	};
@@ -51,13 +51,13 @@ export default class FileUpload extends Component {
 						<div>
 							Try dropping some files here, or click to select files to upload.
 						</div>
+						<div>{
+							files.map((file, index) => (
+								<FileInfo key={index} file={file}/>
+							))
+						}
+						</div>
 					</DropZone>
-					<div>{
-						files.map((file, index) => (
-							<FileInfo key={index} file={file}/>
-						))
-					}
-					</div>
 					<div>
 						<GlyphButton text="Upload" onClick={this.onClick}/>
 					</div>
