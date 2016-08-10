@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import DropZone from '../common/DropZone';
 import GlyphButton from '../common/GlyphButton';
 import FileInfo from '../common/FileInfo';
-import { Grid, Col, Row } from 'react-bootstrap';
+import { Col, Row, Glyphicon } from 'react-bootstrap';
 
 import fetch from 'isomorphic-fetch';
 
@@ -24,7 +24,6 @@ export default class FileUpload extends Component {
 
 	onClick = () => {
 		// TODO Handle response status for upload service
-
 		const { files } = this.state;
 		const { url } = this.props;
 
@@ -47,14 +46,20 @@ export default class FileUpload extends Component {
 			<div>
 				<Row>
 					<Col xs={2} md={2}>
-						<p align="center">
-							<b>Attachments</b>
-						</p>
+						<div>
+							<p>
+								<b>Attachments</b>
+							</p>
+						</div>
 					</Col>
 					<Col xs={10} md={10}>
 						<DropZone onDrop={this.onDrop}>
 							<div>
-								<p>Drop files to attach, or <a>browse</a></p>
+								<p style={{ textAlign: "center" }}>
+									<Glyphicon glyph="cloud-upload"/> Drop files to attach, or <a>browse</a>
+								</p>
+							</div>
+							<div>
 								<ul>{
 									files.map((file, index) => (
 										<FileInfo key={index} file={file}/>
@@ -67,7 +72,7 @@ export default class FileUpload extends Component {
 				</Row>
 				<div>
 					<span>
-                        <GlyphButton glyph="cloud-upload" text="Upload" bsSize="primary" onClick={this.onClick}/>
+                        <GlyphButton type="submit" glyph="cloud-upload" text="Upload" bsSize="primary" onClick={this.onClick}/>
                     </span>
 				</div>
 			</div>
