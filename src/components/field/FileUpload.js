@@ -22,9 +22,8 @@ export default class FileUpload extends Component {
 		this.setState({ files: fileArray });
 	};
 
-	onClick = (event) => {
+	onClick = () => {
 		// TODO Handle response status for upload service
-		event.preventDefault();
 
 		const { files } = this.state;
 		const { url } = this.props;
