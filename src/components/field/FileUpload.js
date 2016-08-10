@@ -21,11 +21,11 @@ export default class FileUpload extends Component {
 			<div>
 				<label>Files</label>
 				<div>
-					<Dropzone onDrop={this.onDrop}>
+					<DropZone onDrop={this.onDrop}>
 						<div>
 							Try dropping some files here, or click to select files to upload.
 						</div>
-					</Dropzone>
+					</DropZone>
 				</div>
 			</div>
 		);
