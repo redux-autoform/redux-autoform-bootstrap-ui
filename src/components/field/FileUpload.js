@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import fetch from 'isomorphic-fetch';
+import DropZone from 'react-dropzone';
 
 export default class FileUpload extends Component {
 	static propTypes = {
@@ -16,7 +17,18 @@ export default class FileUpload extends Component {
 	};
 
 	render() {
-		return false;
+		return (
+			<div>
+				<label>Files</label>
+				<div>
+					<Dropzone onDrop={this.onDrop}>
+						<div>
+							Try dropping some files here, or click to select files to upload.
+						</div>
+					</Dropzone>
+				</div>
+			</div>
+		);
 	}
 
 }
