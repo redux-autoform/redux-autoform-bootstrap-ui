@@ -16,10 +16,22 @@ export default class FileUpload extends Component {
 	};
 
 	onDrop = (files) => {
-		//TODO Check file and size. Avoid duplicated files
-		let fileArray = [...files, ...this.state.files];
+		let fileArray = this.filter([...files, ...this.state.files]);
 
 		this.setState({ files: fileArray });
+	};
+
+	//TODO JS: Create a correct filter..
+	filter = (array) => {
+		// let a = [];
+        //
+		// array.forEach((item) => {
+		// 	if (a.indexOf(item) < 0) {
+		// 		a.push(item);
+		// 	}
+		// });
+
+		return Array.from(new Set(array));
 	};
 
 	onClick = () => {
