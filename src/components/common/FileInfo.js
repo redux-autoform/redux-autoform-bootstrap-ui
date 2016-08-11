@@ -23,12 +23,6 @@ export default class FileUploadItem extends Component {
 		this.setState({ show: show });
 	};
 
-	deleteFile = () => {
-		let { onClick } = this.props;
-		onClick();
-		this.showModal(false);
-	};
-
 	render() {
 		let { file, height, width, onClick } = this.props;
 		let { show } = this.state;
@@ -90,7 +84,7 @@ export default class FileUploadItem extends Component {
 						<Button onClick={() => this.showModal(false)}>
 							Close
 						</Button>
-						<Button bsStyle="primary" onClick={this.deleteFile}>
+						<Button bsStyle="primary" onClick={() => { onClick(); this.showModal(false)}}>
 							Delete
 						</Button>
 					</Modal.Footer>
