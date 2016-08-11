@@ -51,7 +51,7 @@ export default class FileUpload extends Component {
 	};
 
 	render() {
-		let { files, disableClick } = this.state;
+		let { files } = this.state;
 
 		const attachmentStyle = {
 			marginTop: "6px",
