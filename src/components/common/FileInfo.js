@@ -33,14 +33,17 @@ export default class FileUploadItem extends Component {
 			textAlign: 'center'
 		};
 
-		const fileSizeStyle = {
-			textAlign: 'right',
-			paddingRight: "10px"
+		const trashContainerStyle = {
+			display: "inline-block",
+			textAlign: "left",
+			paddingLeft: "10px",
+			paddingBottom: "10px"
 		};
 
-		const glyphSizeStyle = {
-			textAlign: 'left',
-			paddingLeft: "10px",
+		const fileSizeContainerStyle = {
+			display: "inline-block",
+			float: "right",
+			paddingRight: "10px",
 			paddingBottom: "10px"
 		};
 
@@ -63,12 +66,16 @@ export default class FileUploadItem extends Component {
 			<Col xs={4} md={4}>
 				<div style={containerStyle}>
 					<img height={height} width={width} src={image} style={imgStyle}/>
-					<div style={textContainerStyle} onClick={onClick}>
+					<div style={textContainerStyle}>
 						<p style={fileNameStyle}>{filename}</p>
-						<p style={fileSizeStyle}>
-							<Glyphicon glyph="trash"/>
-							{" " + filesize(file.size)}
-						</p>
+						<div>
+							<div onClick={onClick} style={trashContainerStyle}>
+								<Glyphicon glyph="trash"/>
+							</div>
+							<div style={fileSizeContainerStyle}>
+								<p>{filesize(file.size)}</p>
+							</div>
+						</div>
 					</div>
 				</div>
 			</Col>

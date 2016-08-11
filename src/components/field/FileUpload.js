@@ -67,7 +67,7 @@ export default class FileUpload extends Component {
 
 		if (files) {
 			rowStyle = {
-				padding: "5px"
+				padding: "15px"
 			}
 		}
 
