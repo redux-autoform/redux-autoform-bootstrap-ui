@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Col } from 'react-bootstrap';
+import { Col, Glyphicon } from 'react-bootstrap';
 import filesize from 'filesize';
 
 export default class FileUploadItem extends Component {
@@ -16,7 +16,7 @@ export default class FileUploadItem extends Component {
 	};
 
 	render() {
-		let { file, height, width } = this.props;
+		let { file, height, width, onClick } = this.props;
 
 		const containerStyle = {
 			margin: "auto",
@@ -38,6 +38,12 @@ export default class FileUploadItem extends Component {
 			paddingRight: "10px"
 		};
 
+		const glyphSizeStyle = {
+			textAlign: 'left',
+			paddingLeft: "10px",
+			paddingBottom: "10px"
+		};
+
 		const imgStyle = {
 			marginTop: "10px",
 			display: 'block',
@@ -57,9 +63,12 @@ export default class FileUploadItem extends Component {
 			<Col xs={4} md={4}>
 				<div style={containerStyle}>
 					<img height={height} width={width} src={image} style={imgStyle}/>
-					<div style={textContainerStyle}>
+					<div style={textContainerStyle} onClick={onClick}>
 						<p style={fileNameStyle}>{filename}</p>
-						<p style={fileSizeStyle}>{filesize(file.size)}</p>
+						<p style={fileSizeStyle}>
+							<Glyphicon glyph="trash"/>
+							{" " + filesize(file.size)}
+						</p>
 					</div>
 				</div>
 			</Col>

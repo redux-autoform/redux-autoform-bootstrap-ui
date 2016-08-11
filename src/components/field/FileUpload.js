@@ -16,6 +16,7 @@ export default class FileUpload extends Component {
 	};
 
 	onDrop = (files) => {
+		//TODO filter to avoid duplicates
 		let fileArray = [...files, ...this.state.files];
 
 		this.setState({ files: fileArray });
@@ -36,6 +37,13 @@ export default class FileUpload extends Component {
 			method: "POST",
 			body: fileData
 		});
+	};
+
+	deleteItem = (position) => {
+		let { files } = this.state;
+		files.splice(position, 1);
+
+		this.setState({ files: files });
 	};
 
 	render() {
@@ -81,7 +89,7 @@ export default class FileUpload extends Component {
 							<div style={rowStyle}>
 								<Row>{
 									files.map((file, index) => (
-										<FileInfo key={index} file={file}/>
+										<FileInfo key={index} file={file} onClick={() => this.deleteItem(index)}/>
 									))
 								}
 								</Row>
