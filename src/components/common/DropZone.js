@@ -191,7 +191,7 @@ export default class DropZone extends Component {
 
 		if (!className && !style && !activeStyle && !rejectStyle) {
 			style = {
-				backgroundColor: "#f5f5f5",
+				backgroundColor: "#fafafa",
 				width: 'auto',
 				borderWidth: 1,
 				borderColor: '#757575',
@@ -200,11 +200,11 @@ export default class DropZone extends Component {
 			};
 			activeStyle = {
 				borderStyle: 'solid',
-				backgroundColor: '#f5f5f5'
+				backgroundColor: '#fafafa'
 			};
 			rejectStyle = {
 				borderStyle: 'solid',
-				backgroundColor: '#f5f5f5'
+				backgroundColor: '#fafafa'
 			};
 		}
 
