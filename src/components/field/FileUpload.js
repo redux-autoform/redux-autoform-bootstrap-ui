@@ -22,7 +22,6 @@ export default class FileUpload extends Component {
 
 		this.setState({files: fileArray});
         this.setState({disableUpload: false});
-
     };
 
 	onClick = () => {
@@ -50,7 +49,6 @@ export default class FileUpload extends Component {
 
 		this.setState({files: files});
         this.setState({disableUpload: files.length == 0});
-
 	};
 
 	openDropZone = () => {
