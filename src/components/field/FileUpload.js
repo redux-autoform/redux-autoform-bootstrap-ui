@@ -16,22 +16,9 @@ export default class FileUpload extends Component {
 	};
 
 	onDrop = (files) => {
-		let fileArray = this.filter([...files, ...this.state.files]);
+		let fileArray = [...files, ...this.state.files];
 
 		this.setState({ files: fileArray });
-	};
-
-	//TODO JS: Create a correct filter..
-	filter = (array) => {
-		// let a = [];
-        //
-		// array.forEach((item) => {
-		// 	if (a.indexOf(item) < 0) {
-		// 		a.push(item);
-		// 	}
-		// });
-
-		return Array.from(new Set(array));
 	};
 
 	onClick = () => {
@@ -54,7 +41,6 @@ export default class FileUpload extends Component {
 	render() {
 		let { files } = this.state;
 
-		//TODO Think how to manage styles correctly
 		const attachmentStyle = {
 			marginTop: "6px",
 			color: "#616161"
@@ -71,10 +57,9 @@ export default class FileUpload extends Component {
 
 		let rowStyle = {};
 
-		//TODO check row
 		if (files) {
 			rowStyle = {
-				padding: "10px"
+				padding: "5px"
 			}
 		}
 
@@ -105,7 +90,7 @@ export default class FileUpload extends Component {
 					</Col>
 				</Row>
 				<Col>
-					<GlyphButton type="submit" glyph="cloud-upload" text="Upload" bsSize="primary" onClick={this.onClick}/>
+					<GlyphButton type="submit" glyph="cloud-upload" text="Upload" bsSize="sm" bsStyle="primary" onClick={this.onClick}/>
 				</Col>
 			</div>
 		);
