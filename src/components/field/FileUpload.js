@@ -46,8 +46,12 @@ export default class FileUpload extends Component {
 		this.setState({ files: files });
 	};
 
+	openDropZone = () => {
+		this.refs.dropzone.open();
+	};
+
 	render() {
-		let { files } = this.state;
+		let { files, disableClick } = this.state;
 
 		const attachmentStyle = {
 			marginTop: "6px",
@@ -55,7 +59,7 @@ export default class FileUpload extends Component {
 		};
 
 		const messageContainerStyle = {
-			marginTop: "6px"
+			marginTop: "10px"
 		};
 
 		const messageStyle = {
@@ -63,7 +67,9 @@ export default class FileUpload extends Component {
 			color: "#616161"
 		};
 
-		let rowStyle = {};
+		let rowStyle = {
+			padding: "0px"
+		};
 
 		if (files) {
 			rowStyle = {
@@ -80,10 +86,10 @@ export default class FileUpload extends Component {
 						</div>
 					</Col>
 					<Col xs={10} md={10}>
-						<DropZone onDrop={this.onDrop}>
+						<DropZone ref="dropzone" onDrop={this.onDrop} disableClick>
 							<div style={messageContainerStyle}>
 								<p style={messageStyle}>
-									<Glyphicon glyph="cloud-upload"/> Drop files to attach, or <a>browse</a>
+									<Glyphicon glyph="cloud-upload"/> Drop files to attach, or <a onClick={this.openDropZone}>browse</a>
 								</p>
 							</div>
 							<div style={rowStyle}>
