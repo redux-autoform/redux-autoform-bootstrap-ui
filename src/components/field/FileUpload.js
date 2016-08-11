@@ -12,15 +12,18 @@ export default class FileUpload extends Component {
 	};
 
 	state = {
-		files: []
+		files: [],
+        disableUpload: true
 	};
 
 	onDrop = (files) => {
 		//TODO filter to avoid duplicates
 		let fileArray = [...files, ...this.state.files];
 
-		this.setState({ files: fileArray });
-	};
+		this.setState({files: fileArray});
+        this.setState({disableUpload: false});
+
+    };
 
 	onClick = () => {
 		// TODO Handle response status for upload service
@@ -36,14 +39,18 @@ export default class FileUpload extends Component {
 		fetch(url, {
 			method: "POST",
 			body: fileData
-		});
+		})
+		.then(response => response.json())
+        .then(({message}) => alert(message));
 	};
 
 	deleteItem = (position) => {
 		let { files } = this.state;
 		files.splice(position, 1);
 
-		this.setState({ files: files });
+		this.setState({files: files});
+        this.setState({disableUpload: this.state.files.length == 0});
+
 	};
 
 	openDropZone = () => {
@@ -51,7 +58,7 @@ export default class FileUpload extends Component {
 	};
 
 	render() {
-		let { files } = this.state;
+		let { files, disableUpload } = this.state;
 
 		const attachmentStyle = {
 			marginTop: "6px",
@@ -104,7 +111,7 @@ export default class FileUpload extends Component {
 					</Col>
 				</Row>
 				<Col>
-					<GlyphButton type="submit" glyph="cloud-upload" text="Upload" bsSize="sm" bsStyle="primary" onClick={this.onClick}/>
+					<GlyphButton disabled={disableUpload} type="submit" glyph="cloud-upload" text="Upload" bsSize="sm" bsStyle="primary" onClick={this.onClick}/>
 				</Col>
 			</div>
 		);
