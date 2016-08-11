@@ -90,7 +90,7 @@ export default class FileUploadItem extends Component {
 						<Button onClick={() => this.showModal(false)}>
 							Close
 						</Button>
-						<Button bsStyle="primary" onClick={onClick}>
+						<Button bsStyle="primary" onClick={this.deleteFile}>
 							Delete
 						</Button>
 					</Modal.Footer>
