@@ -23,12 +23,6 @@ export default class FileUploadItem extends Component {
 		this.setState({ show: show });
 	};
 
-	deleteFile = () => {
-		let { onClick } = this.props;
-		onClick();
-		this.showModal(false);
-	};
-
 	render() {
 		let { file, height, width, onClick } = this.props;
 		let { show } = this.state;
