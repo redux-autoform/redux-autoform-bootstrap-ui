@@ -75,10 +75,10 @@ export default class FileUploadItem extends Component {
 			<Col xs={4} md={4}>
 				<Modal show={show}>
 					<Modal.Header>
-						<Modal.Title>Delete file</Modal.Title>
+						<Modal.Title>Delete <b>{file.name}</b></Modal.Title>
 					</Modal.Header>
 					<Modal.Body>
-						Are you sure that you want to delete this file?
+						<p>Are you sure that you want to delete this file?</p>
 					</Modal.Body>
 					<Modal.Footer>
 						<Button onClick={() => this.showModal(false)}>
