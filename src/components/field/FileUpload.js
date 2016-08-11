@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import DropZone from '../common/DropZone';
 import GlyphButton from '../common/GlyphButton';
 import FileInfo from '../common/FileInfo';
-import { Col, Row, Glyphicon } from 'react-bootstrap';
+import { Col, Row, Glyphicon, Alert } from 'react-bootstrap';
 
 import fetch from 'isomorphic-fetch';
 
@@ -13,7 +13,10 @@ export default class FileUpload extends Component {
 
 	state = {
 		files: [],
-        disableUpload: true
+        disableUpload: true,
+		status: null,
+		message: null,
+		alertVisible: false
 	};
 
 	onDrop = (files) => {
@@ -40,7 +43,17 @@ export default class FileUpload extends Component {
 			body: fileData
 		})
 		.then(response => response.json())
-        .then(({message}) => alert(message));
+        .then(({status, message}) => this.setState({
+        	status: status,
+			message: message,
+			alertVisible: true
+        }));
+
+		setTimeout(() => this.dismissAlert(), 4000);
+	};
+
+	dismissAlert = () => {
+		this.setState({alertVisible: false});
 	};
 
 	deleteItem = (position) => {
@@ -56,7 +69,7 @@ export default class FileUpload extends Component {
 	};
 
 	render() {
-		let { files, disableUpload } = this.state;
+		let { files, disableUpload, status, message, alertVisible } = this.state;
 
 		const attachmentStyle = {
 			marginTop: "6px",
@@ -72,6 +85,10 @@ export default class FileUpload extends Component {
 			color: "#616161"
 		};
 
+		const alertStyle = {
+			textAlign: "center"
+		};
+
 		let rowStyle = {
 			padding: "0px"
 		};
@@ -80,6 +97,24 @@ export default class FileUpload extends Component {
 			rowStyle = {
 				padding: "15px"
 			}
+		}
+
+		let alert;
+
+		if (status && message && alertVisible) {
+			alert = (
+				<Alert bsStyle="success" onDismiss={this.dismissAlert}>
+					<p style={alertStyle}>{message}</p>
+				</Alert>
+			)
+		} else if (!status && message && alertVisible) {
+			alert = (
+				<Alert bsStyle="warning" onDismiss={this.dismissAlert}>
+					<p style={alertStyle}>{message}</p>
+				</Alert>
+			)
+		} else {
+			alert = null;
 		}
 
 		return (
@@ -106,6 +141,7 @@ export default class FileUpload extends Component {
 								</Row>
 							</div>
 						</DropZone>
+						{alert}
 					</Col>
 				</Row>
 				<Col>
