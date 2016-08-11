@@ -21,7 +21,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage});
 
-
 const webpackCompiler = webpack(webpackConfig);
 
 require.extensions['.html'] = function (module, filename) {
@@ -53,15 +52,17 @@ router.get("/api/languages", (request, response) => {
     response.status(200).json(arr);
 });
 
-router.post("/upload", upload.array("fileData"), (request, response) => {
-   let files = request.files;
+router.post("/upload", (request, response) => {
 
+    upload.array("fileData")(request, response, (err) => {
+        if(err) {
+            response.json({status: false, message: "There was an error while uploading files."});
+            return;
+        }
 
-   files.forEach(file => {
-       console.log(JSON.stringify(file));
-   });
+        response.json({status: true, message: "Files correctly uploaded."});
 
-   response.end();
+    })
 
 });
 
