@@ -49,7 +49,8 @@ export default class FileUpload extends Component {
 		files.splice(position, 1);
 
 		this.setState({files: files});
-        this.setState({disableUpload: this.state.files.length == 0});
+        this.setState({disableUpload: files.length == 0});
+
 	};
 
 	openDropZone = () => {
