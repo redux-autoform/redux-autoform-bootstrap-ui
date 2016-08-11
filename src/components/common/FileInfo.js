@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Col, Glyphicon } from 'react-bootstrap';
+import { Col, Glyphicon, Modal, Button } from 'react-bootstrap';
 import filesize from 'filesize';
 
 export default class FileUploadItem extends Component {
@@ -15,8 +15,23 @@ export default class FileUploadItem extends Component {
 		width: "150px"
 	};
 
+	state = {
+		show: false
+	};
+
+	showModal = (show) => {
+		this.setState({ show: show });
+	};
+
+	deleteFile = () => {
+		let { onClick } = this.props;
+		onClick();
+		this.showModal(false);
+	};
+
 	render() {
 		let { file, height, width, onClick } = this.props;
+		let { show } = this.state;
 
 		const containerStyle = {
 			margin: "auto",
@@ -64,12 +79,28 @@ export default class FileUploadItem extends Component {
 
 		return (
 			<Col xs={4} md={4}>
+				<Modal show={show}>
+					<Modal.Header>
+						<Modal.Title>Delete file</Modal.Title>
+					</Modal.Header>
+					<Modal.Body>
+						Are you sure that you want to delete this file?
+					</Modal.Body>
+					<Modal.Footer>
+						<Button onClick={() => this.showModal(false)}>
+							Close
+						</Button>
+						<Button bsStyle="primary" onClick={onClick}>
+							Delete
+						</Button>
+					</Modal.Footer>
+				</Modal>
 				<div style={containerStyle}>
 					<img height={height} width={width} src={image} style={imgStyle}/>
 					<div style={textContainerStyle}>
 						<p style={fileNameStyle}>{filename}</p>
 						<div>
-							<div onClick={onClick} style={trashContainerStyle}>
+							<div onClick={() => this.showModal(true)} style={trashContainerStyle}>
 								<Glyphicon glyph="trash"/>
 							</div>
 							<div style={fileSizeContainerStyle}>
