@@ -124,5 +124,15 @@ export default [
         layoutName: 'edit',
         formTitle: 'Edit contact',
         schema: require('./presets/componentsFieldGroup.txt')
+    },
+    {
+        name: 'componentsFileUpload',
+        displayName: 'Components - FileUpload (Experimental)',
+        entityName: 'contact',
+        layoutName: 'edit',
+        formTitle: 'Edit contact',
+        schema: require('./presets/componentsFileUpload.txt')
     }
+
+
 ]

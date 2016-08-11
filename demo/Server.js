@@ -8,6 +8,19 @@ import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpack from 'webpack';
 
+import multer from 'multer';
+
+const storage = multer.diskStorage({
+    destination: function(request, file, callback) {
+        callback(null, "./demo/uploads");
+    },
+    filename: function(request, file, callback) {
+        callback(null, file.originalname + '-' + Date.now())
+    }
+});
+
+const upload = multer({storage});
+
 const webpackCompiler = webpack(webpackConfig);
 
 require.extensions['.html'] = function (module, filename) {
@@ -15,7 +28,9 @@ require.extensions['.html'] = function (module, filename) {
 };
 
 const development = process.env.NODE_ENV !== 'production';
+
 let app = express();
+
 let router = new Router();
 
 router.get("/api/languages", (request, response) => {
@@ -35,6 +50,20 @@ router.get("/api/languages", (request, response) => {
     ];
 
     response.status(200).json(arr);
+});
+
+router.post("/upload", (request, response) => {
+
+    upload.array("fileData")(request, response, (err) => {
+        if(err) {
+            response.json({status: false, message: "There was an error while uploading files."});
+            return;
+        }
+
+        response.json({status: true, message: "Files correctly uploaded."});
+
+    })
+
 });
 
 app.use(router);

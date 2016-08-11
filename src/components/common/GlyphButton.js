@@ -8,8 +8,13 @@ class GlyphButton extends Component {
         bsSize: PropTypes.string,
         text: PropTypes.string,
         glyph: PropTypes.string.isRequired,
-        onClick: PropTypes.func
+        onClick: PropTypes.func,
+        disabled: PropTypes.bool
     };
+
+    static defaultProps = {
+        disabled: false
+    }
 
     handleSave = () => {
         let { onClick } = this.props;
@@ -35,11 +40,11 @@ class GlyphButton extends Component {
     };
 
     render() {
-        let { bsSize, bsStyle,glyph } = this.props;
+        let { bsSize, bsStyle,glyph, disabled } = this.props;
         let text = this.getText();
 
         return (
-            <Button bsStyle={bsStyle} bsSize={bsSize} onClick={this.handleSave}>
+            <Button disabled={disabled} bsStyle={bsStyle} bsSize={bsSize} onClick={this.handleSave}>
                 <Glyphicon glyph={glyph}/>
                 { text }
             </Button>
