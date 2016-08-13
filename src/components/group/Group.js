@@ -9,13 +9,10 @@ class Group extends BaseGroup {
         componentFactory: PropTypes.object.isRequired
     };
 
-    render() {
-
+    getHeader = () => {
         let {layout} = this.props;
-        let content = this.getContent();
 
-        // Group header
-        let header = layout.title
+        return layout.title
             ? (
             <header className="metaform-group-header">
                 <span className="metaform-group-title">
@@ -23,6 +20,12 @@ class Group extends BaseGroup {
                 </span>
             </header>
         ) : null;
+    };
+
+    render() {
+        let {layout} = this.props;
+        let content = this.getContent();
+        let header = (!layout.headLess)? this.getHeader() : null;
 
         return (
             <section>

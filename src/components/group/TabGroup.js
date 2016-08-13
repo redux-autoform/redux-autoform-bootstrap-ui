@@ -14,6 +14,51 @@ class TabGroup extends BaseGroup {
 		position: 0
 	};
 
+    getComponents = () => {
+        let { layout, componentFactory, fields } = this.props;
+        let components;
+
+        if (layout.fields) {
+
+            components = layout.fields.map(field => {
+                let fieldMetadata = fields.find(cp => cp.name === field.name);
+
+                if (!fieldMetadata) {
+                    throw Error(`Could not find field. Field: ${field.name}`);
+                }
+
+                // in case the field is going to render layouts internally, it's going to need information about the
+                // layout and fields. I'm not sure if this is the best way to do it, probably not. TODO: Review it.
+                fieldMetadata._extra = {layout, fields};
+
+                return {
+                    data: fieldMetadata,
+                    length: layout.fields.length,
+                    component: componentFactory.buildFieldComponent(fieldMetadata)
+                }
+            });
+
+        } else if (layout.groups) {
+
+            components = layout.groups.map(group => {
+                group = {...group, headLess: true};
+
+                return {
+                    data: group,
+                    length: layout.groups.length,
+                    component: componentFactory.buildGroupComponent({
+                        component: group.component,
+                        layout: group,
+                        fields: fields,
+                        componentFactory: componentFactory
+                    })
+                }
+            });
+        }
+
+        return components;
+    };
+
 	onNavItemSelected = (eventKey) => {
 		this.setState({ position: eventKey });
 	};
