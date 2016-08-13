@@ -23,7 +23,7 @@ export default [
     },
     {
         name: 'layoutsTabs',
-        displayName: 'Layouts - Tabs (Experimental)',
+        displayName: 'Layouts - Tabs',
         entityName: 'contact',
         layoutName: 'edit',
         formTitle: 'Edit contact',
