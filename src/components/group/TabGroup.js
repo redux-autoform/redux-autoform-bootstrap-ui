@@ -20,14 +20,14 @@ class TabGroup extends BaseGroup {
 
 	render() {
 		let { layout } = this.props;
-		let position = this.state.position;
+		let { position } = this.state;
 		let content = this.getContent();
 
 		return (
 			<section>
 				<div className='row'>
 					<div className="metaform-group">
-						<Nav bsStyle="tabs" onSelect={this.handleSelect}>
+						<Nav bsStyle="tabs" activeKey={position} onSelect={this.handleSelect} navbar>
 							{
 								layout.groups.map(({ title }, index) => (
 									<NavItem key={index} eventKey={index}>
