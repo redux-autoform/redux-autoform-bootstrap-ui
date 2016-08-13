@@ -14,7 +14,7 @@ class TabGroup extends BaseGroup {
 		position: 0
 	};
 
-	handleSelect = (eventKey) => {
+	onNavItemSelected = (eventKey) => {
 		this.setState({ position: eventKey });
 	};
 
@@ -27,7 +27,7 @@ class TabGroup extends BaseGroup {
 			<section>
 				<div className="row">
 					<div className="metaform-group">
-						<Nav bsStyle="tabs" activeKey={position} onSelect={this.handleSelect} navbar justified>
+						<Nav bsStyle="tabs" activeKey={position} onSelect={this.onNavItemSelected} navbar justified>
 							{
 								layout.groups.map(({ title }, index) => (
 									<NavItem key={index} eventKey={index}>
