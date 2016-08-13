@@ -25,7 +25,7 @@ class TabGroup extends BaseGroup {
 
 		return (
 			<section>
-				<div className='row'>
+				<div className="row">
 					<div className="metaform-group">
 						<Nav bsStyle="tabs" activeKey={position} onSelect={this.handleSelect} navbar justified>
 							{
