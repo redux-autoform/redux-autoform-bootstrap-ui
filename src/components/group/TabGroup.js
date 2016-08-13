@@ -27,7 +27,7 @@ class TabGroup extends BaseGroup {
 			<section>
 				<div className='row'>
 					<div className="metaform-group">
-						<Nav bsStyle="tabs" activeKey={position} onSelect={this.handleSelect} navbar>
+						<Nav bsStyle="tabs" activeKey={position} onSelect={this.handleSelect} navbar justified>
 							{
 								layout.groups.map(({ title }, index) => (
 									<NavItem key={index} eventKey={index}>
@@ -44,7 +44,6 @@ class TabGroup extends BaseGroup {
 			</section>
 		);
 	}
-
 }
 
 export default TabGroup;
