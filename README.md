@@ -93,6 +93,17 @@ Now the demo should be available here: [http://localhost:4000/](http://localhost
 
 ## Components
 
+### Common metadata
+
+Metadata that is common to most of the components.
+
+Metadata | Description
+--- | ---
+displayName | The user-friendly name for the field.
+component | Which component to use. 
+readOnly | Whether or not the component should be in read-only state.
+help | Additional help so the end-user knows what the field is about.
+
 ### TextBox
 
 Specific metadata for the `TextBox` component. Common metadata is not listed.
