@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import BaseGroup from './BaseGroup';
-import WizardRoot from '../common/WizardRoot';
 
 import { Button } from 'react-bootstrap';
 
@@ -21,8 +20,13 @@ class WizardGroup extends BaseGroup {
         super(props);
         let { componentFactory } = props;
 
-        componentFactory.registerRootComponent("Wizard", WizardRoot);
         componentFactory.setCurrentRoot("Wizard");
+    }
+
+    componentWillUnmount() {
+        let { componentFactory } = this.props;
+
+        componentFactory.setCurrentRoot("default");
     }
 
 

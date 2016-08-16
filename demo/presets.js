@@ -30,6 +30,14 @@ export default [
         schema: require('./presets/layoutsTabs.txt')
     },
     {
+        name: 'layoutsWizard',
+        displayName: 'Layouts - Wizard (Experimental)',
+        entityName: 'contact',
+        layoutName: 'edit',
+        formTitle: 'Edit contact',
+        schema: require('./presets/layoutsWizard.txt')
+    },
+    {
         name: 'schemaTypeSimple',
         displayName: 'Schema types - Simple',
         entityName: '',

@@ -16,6 +16,7 @@ import FileUpload from '../components/field/FileUpload';
 
 
 import Root from '../components/common/Root';
+import WizardRoot from '../components/common/WizardRoot';
 
 class BootstrapFactory extends ComponentFactory {
     constructor(config) {
@@ -49,6 +50,7 @@ class BootstrapFactory extends ComponentFactory {
 
 
         this.registerRootComponent(this.currentRoot, Root);
+        this.registerRootComponent("Wizard", WizardRoot);
 
     };
     
