@@ -10,9 +10,9 @@ const Root = ({fieldLayout, children, handleSubmit, buttonBar, submitting}) => {
 
     return (
         <div className="meta-form">
+            <p>WIZARD!</p>
             <form onSubmit={handleSubmit} className={formClassName}>
                 { children }
-                { React.createElement(buttonBar, { submitting: submitting }) }
             </form>
         </div>
     );

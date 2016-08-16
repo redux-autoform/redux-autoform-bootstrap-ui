@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import BaseGroup from './BaseGroup';
+import WizardRoot from '../common/WizardRoot';
 
 import { Button } from 'react-bootstrap';
 
@@ -15,6 +16,14 @@ class WizardGroup extends BaseGroup {
         position: 0,
         totalSteps: this.props.layout.groups.length - 1
     };
+
+    constructor(props) {
+        super(props);
+        let { componentFactory } = props;
+
+        componentFactory.registerRootComponent("Wizard", WizardRoot);
+        componentFactory.setCurrentRoot("Wizard");
+    }
 
 
     nextStep = () => {

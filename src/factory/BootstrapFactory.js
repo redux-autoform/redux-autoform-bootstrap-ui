@@ -20,9 +20,14 @@ import Root from '../components/common/Root';
 class BootstrapFactory extends ComponentFactory {
     constructor(config) {
         super();
+
+        this.rootComponentsById = {};
+        this.currentRoot = "default";
+
         this.setBaseComponents();
         this.setDefaultConfiguration(config);
     }
+
     
     setBaseComponents = () => {
         this.registerFieldComponent('TextBox', ['string', 'int', 'float', 'datetime', 'date', 'time'], TextBox);
@@ -42,6 +47,9 @@ class BootstrapFactory extends ComponentFactory {
         this.registerGroupComponent('TabGroup', TabGroup);
         this.registerGroupComponent('WizardGroup', WizardGroup);
 
+
+        this.registerRootComponent(this.currentRoot, Root);
+
     };
     
     setDefaultConfiguration = (config) => {
@@ -49,8 +57,17 @@ class BootstrapFactory extends ComponentFactory {
         this.setDefaultGroupComponent('Group');
     };
 
+
+    registerRootComponent = (id, component) => {
+        this.rootComponentsById[id] = component;
+    }
+
+    setCurrentRoot = (id) => {
+        this.currentRoot = id;
+    }
+
     getRoot = () => {
-        return Root;
+        return this.rootComponentsById[this.currentRoot];
     }
 
 }
