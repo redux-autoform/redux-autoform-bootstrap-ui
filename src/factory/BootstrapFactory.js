@@ -4,6 +4,7 @@ import Select from '../components/field/Select';
 import TextArea from '../components/field/TextArea';
 import Group from '../components/group/Group';
 import TabGroup from '../components/group/TabGroup';
+import WizardGroup from '../components/group/WizardGroup';
 import ArrayContainer from '../components/field/ArrayContainer';
 import DateTimePicker from '../components/field/DateTimePicker';
 import Lookup from '../components/field/Lookup';
@@ -12,6 +13,7 @@ import FieldGroup from '../components/field/FieldGroup';
 import Checkbox from '../components/field/CheckBox';
 import Radio from '../components/field/Radio';
 import FileUpload from '../components/field/FileUpload';
+
 
 import Root from '../components/common/Root';
 
@@ -36,9 +38,10 @@ class BootstrapFactory extends ComponentFactory {
         this.registerFieldComponent('FileUpload', ['string'], FileUpload);
 
 
-
         this.registerGroupComponent('Group', Group);
         this.registerGroupComponent('TabGroup', TabGroup);
+        this.registerGroupComponent('WizardGroup', WizardGroup);
+
     };
     
     setDefaultConfiguration = (config) => {
