@@ -1,12 +1,11 @@
 {
   "name": "redux-autoform-bootstrap-ui",
-  "version": "1.4.1",
+  "version": "1.4.2-experimental",
   "description": "Bootstrap UI implementation for redux-autoform",
   "main": "./lib/index.js",
   "scripts": {
     "build-demo": "cross-env NODE_ENV=production babel-node ./tools/build-demo.js",
     "build-lib": "cross-env NODE_ENV=production babel-node ./tools/build-lib.js",
-    "publish": "npm run build-lib && npm publish",
     "start": "cross-env NODE_ENV=development babel-node ./demo/Server.js",
     "test": "mocha ./test --compilers js:babel-register",
     "coverage": "babel-node ./node_modules/.bin/isparta cover _mocha"
