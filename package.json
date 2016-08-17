@@ -79,7 +79,7 @@
     "react-hot-loader": "^1.3.0",
     "react-router": "^2.0.0",
     "react-router-redux": "^4.0.2",
-    "redux-autoform": "^0.10.1-experimental",
+    "redux-autoform": "^0.10.2-experimental",
     "redux-devtools": "^3.2.0",
     "redux-devtools-dock-monitor": "^1.1.1",
     "redux-devtools-log-monitor": "^1.0.9",

@@ -1,14 +1,15 @@
 import React, { Component, PropTypes } from 'react';
 import BaseGroup from './BaseGroup';
 
-import { Button } from 'react-bootstrap';
+import { Button, ButtonGroup } from 'react-bootstrap';
 
 class WizardGroup extends BaseGroup {
     static propTypes = {
         component: PropTypes.string,
         fields: PropTypes.array.isRequired,
         layout: PropTypes.object.isRequired,
-        componentFactory: PropTypes.object.isRequired
+        componentFactory: PropTypes.object.isRequired,
+        buttonBar: PropTypes.func.isRequired
     };
 
     state = {
@@ -44,11 +45,17 @@ class WizardGroup extends BaseGroup {
 
     getButtonSection = () => {
         let { position, totalSteps } = this.state;
+        let { buttonBar } = this.props;
 
         return (
-            <div className="button-toolbar btn-toolbar pull-right">
-                <Button bsStyle="primary" disabled={position == 0} onClick={this.backStep}>Back</Button>
-                <Button bsStyle="primary" disabled={position == totalSteps} onClick={this.nextStep}>Next</Button>
+            <div>
+                <div className="button-toolbar btn-toolbar pull-right">
+                    <ButtonGroup>
+                        <Button bsStyle="primary" disabled={position == 0} onClick={this.backStep}>Back</Button>
+                        <Button bsStyle="primary" disabled={position == totalSteps} onClick={this.nextStep}>Next</Button>
+                    </ButtonGroup>
+                    { position == totalSteps? React.createElement(buttonBar, { submitting: false }) : null }
+                </div>
             </div>
         )
 
