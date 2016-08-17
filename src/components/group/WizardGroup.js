@@ -17,9 +17,8 @@ class WizardGroup extends BaseGroup {
         totalSteps: this.props.layout.groups.length - 1
     };
 
-    constructor(props) {
-        super(props);
-        let { componentFactory } = props;
+    componentWillMount() {
+        let { componentFactory } = this.props;
 
         componentFactory.setCurrentRoot("Wizard");
     }
