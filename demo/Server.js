@@ -33,25 +33,6 @@ let app = express();
 
 let router = new Router();
 
-router.get("/api/languages", (request, response) => {
-    const arr = [
-        {
-            value: "español",
-            label: "Español"
-        },
-        {
-            value: "english",
-            label: "English"
-        },
-        {
-            value: "deutsch",
-            label: "Deutsch"
-        }
-    ];
-
-    response.status(200).json(arr);
-});
-
 router.post("/upload", (request, response) => {
 
     upload.array("fileData")(request, response, (err) => {
