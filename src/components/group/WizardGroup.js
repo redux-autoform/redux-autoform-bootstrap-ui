@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import BaseGroup from './BaseGroup';
 
-import { Button, ButtonGroup } from 'react-bootstrap';
+import { Button, Row, Col, ButtonToolbar } from 'react-bootstrap';
 
 class WizardGroup extends BaseGroup {
     static propTypes = {
@@ -9,7 +9,7 @@ class WizardGroup extends BaseGroup {
         fields: PropTypes.array.isRequired,
         layout: PropTypes.object.isRequired,
         componentFactory: PropTypes.object.isRequired,
-        buttonBar: PropTypes.func.isRequired
+        buttonBar: PropTypes.func
     };
 
     state = {
@@ -34,31 +34,60 @@ class WizardGroup extends BaseGroup {
         let { position } = this.state;
 
         this.setState({position : position + 1})
-    }
+    };
 
     backStep = () => {
         let { position } = this.state;
 
         this.setState({position : position - 1})
-    }
+    };
 
     getButtonSection = () => {
         let { position, totalSteps } = this.state;
-        let { buttonBar } = this.props;
+        let { submitting } = this.props;
+
+        let nextButton = null;
+        let backButton = null;
+        let submitButton = null;
+
+        if (position != 0) {
+            backButton = (
+                <Button bsStyle="primary" bsSize="large" onClick={this.backStep}>
+                    Back
+                </Button>
+            );
+        }
+
+        if (position != totalSteps) {
+            nextButton = (
+                <Button bsStyle="primary" bsSize="large" onClick={this.nextStep}>
+                    Next
+                </Button>
+            );
+        }
+
+        if (position == totalSteps) {
+            submitButton = (
+                <Button className="pull-right" bsStyle="success" bsSize="large" type="submit"  disabled={submitting || false}>
+                    Submit
+                </Button>
+            )
+        }
 
         return (
-            <div>
-                <div className="button-toolbar btn-toolbar pull-right">
-                    <ButtonGroup>
-                        <Button bsStyle="primary" disabled={position == 0} onClick={this.backStep}>Back</Button>
-                        <Button bsStyle="primary" disabled={position == totalSteps} onClick={this.nextStep}>Next</Button>
-                    </ButtonGroup>
-                    { position == totalSteps? React.createElement(buttonBar, { submitting: false }) : null }
-                </div>
-            </div>
+            <Row>
+                <Col xs={6} md={4}/>
+                <Col xs={6} md={4}/>
+                <Col xs={6} md={4}>
+                    <ButtonToolbar className="button-toolbar pull-right">
+                        {backButton}
+                        {nextButton}
+                        {submitButton}
+                    </ButtonToolbar>
+                </Col>
+            </Row>
         )
-
-    }
+    };
 
     render() {
         let { position } = this.state;
@@ -70,10 +99,10 @@ class WizardGroup extends BaseGroup {
             <section>
                 <div className="row">
                     <div className="metaform-group">
-                        { content[position] }
-                        { buttonSection }
+                        {content[position]}
                     </div>
                 </div>
+                {buttonSection}
             </section>
         );
     }
