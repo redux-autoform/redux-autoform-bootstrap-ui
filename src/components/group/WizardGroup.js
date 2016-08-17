@@ -89,17 +89,28 @@ class WizardGroup extends BaseGroup {
         )
     };
 
-    render() {
-        let { position } = this.state;
+    getSteps = () => {
+        let { layout } = this.props;
         let content = this.getContent();
 
+        // Maps each content to his transition function
+        let steps = layout.groups.map((group, index) => ({content: content[index], transition: group.transition}));
+
+        return steps;
+    };
+
+    render() {
+        let { position } = this.state;
+
+        let steps = this.getSteps();
         let buttonSection = this.getButtonSection();
+
 
         return (
             <section>
                 <div className="row">
                     <div className="metaform-group">
-                        {content[position]}
+                        {steps[position].content}
                     </div>
                 </div>
                 {buttonSection}
