@@ -57,7 +57,21 @@
                                 {
                                     name: 'f5',
                                     size: 4
-                                },
+                                }
+
+                            ],
+                            transition: (context) => {
+                                if(context.fields.f2 === "goToLast")
+                                   context.goToStep("last");
+                                else
+                                   context.next();
+                            }
+                        },
+                        {
+                            title: 'Fourth',
+                            name: "fourth",
+                            orientation: 'horizontal',
+                            fields: [
                                 {
                                     name: 'f6',
                                     size: 8
@@ -65,14 +79,21 @@
                             ]
                         },
                         {
-                            title: 'Fourth',
-                            name: "last",
+                            title: 'Fifth',
+                            name: "fifth",
                             orientation: 'horizontal',
                             fields: [
                                 {
                                     name: 'f7',
-                                    innerSize: 3
-                                },
+                                    size: 8
+                                }
+                            ]
+                        },
+                        {
+                            title: 'Last',
+                            name: "last",
+                            orientation: 'horizontal',
+                            fields: [
                                 {
                                     name: 'f8',
                                     innerSize: 3
