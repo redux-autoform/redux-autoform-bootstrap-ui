@@ -8,27 +8,13 @@ class WizardGroup extends BaseGroup {
         component: PropTypes.string,
         fields: PropTypes.array.isRequired,
         layout: PropTypes.object.isRequired,
-        componentFactory: PropTypes.object.isRequired,
-        buttonBar: PropTypes.func
+        componentFactory: PropTypes.object.isRequired
     };
 
     state = {
         position: 0,
         totalSteps: this.props.layout.groups.length - 1
     };
-
-    componentWillMount() {
-        let { componentFactory } = this.props;
-
-        componentFactory.setCurrentRoot("Wizard");
-    }
-
-    componentWillUnmount() {
-        let { componentFactory } = this.props;
-
-        componentFactory.setCurrentRoot("default");
-    }
-
 
     nextStep = () => {
         let { position } = this.state;
@@ -105,7 +91,6 @@ class WizardGroup extends BaseGroup {
         let steps = this.getSteps();
         let buttonSection = this.getButtonSection();
 
-
         return (
             <section>
                 <div className="row">
@@ -118,5 +103,6 @@ class WizardGroup extends BaseGroup {
         );
     }
 }
+
 
 export default WizardGroup;
