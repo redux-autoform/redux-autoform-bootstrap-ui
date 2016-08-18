@@ -22,9 +22,6 @@ class BootstrapFactory extends ComponentFactory {
     constructor(config) {
         super();
 
-        this.rootComponentsById = {};
-        this.currentRoot = "default";
-
         this.setBaseComponents();
         this.setDefaultConfiguration(config);
     }
@@ -49,7 +46,7 @@ class BootstrapFactory extends ComponentFactory {
         this.registerGroupComponent('WizardGroup', WizardGroup);
 
 
-        this.registerRootComponent(this.currentRoot, Root);
+        this.registerRootComponent("default", Root);
         this.registerRootComponent("Wizard", WizardRoot);
 
     };
@@ -57,20 +54,9 @@ class BootstrapFactory extends ComponentFactory {
     setDefaultConfiguration = (config) => {
         this.setDefaultFieldComponents(config);
         this.setDefaultGroupComponent('Group');
+        this.setCurrentRoot("default");
     };
 
-
-    registerRootComponent = (id, component) => {
-        this.rootComponentsById[id] = component;
-    }
-
-    setCurrentRoot = (id) => {
-        this.currentRoot = id;
-    }
-
-    getRoot = () => {
-        return this.rootComponentsById[this.currentRoot];
-    }
 
 }
 
