@@ -14,7 +14,7 @@
             ],
             layouts: [
                 {
-                    name: 'edit',
+                    name: 'wizard',
                     component: 'WizardGroup',
                     groups: [
                         {

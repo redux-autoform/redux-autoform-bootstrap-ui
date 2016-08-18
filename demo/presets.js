@@ -33,7 +33,7 @@ export default [
         name: 'layoutsWizard',
         displayName: 'Layouts - Wizard (Experimental)',
         entityName: 'contact',
-        layoutName: 'edit',
+        layoutName: 'wizard',
         formTitle: 'Edit contact',
         schema: require('./presets/layoutsWizard.txt')
     },
@@ -41,7 +41,7 @@ export default [
         name: 'layoutsConditionalWizard',
         displayName: 'Layouts - Conditional Wizard (Experimental)',
         entityName: 'contact',
-        layoutName: 'edit',
+        layoutName: 'wizard',
         formTitle: 'Edit contact',
         schema: require('./presets/layoutsConditionalWizard.txt')
     },

@@ -14,9 +14,7 @@ import Checkbox from '../components/field/CheckBox';
 import Radio from '../components/field/Radio';
 import FileUpload from '../components/field/FileUpload';
 
-
 import Root from '../components/common/Root';
-import WizardRoot from '../components/common/WizardRoot';
 
 class BootstrapFactory extends ComponentFactory {
     constructor(config) {
@@ -47,8 +45,6 @@ class BootstrapFactory extends ComponentFactory {
 
 
         this.registerRootComponent("default", Root);
-        this.registerRootComponent("Wizard", WizardRoot);
-
     };
     
     setDefaultConfiguration = (config) => {
