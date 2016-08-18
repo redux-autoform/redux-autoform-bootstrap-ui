@@ -19,6 +19,7 @@
                     groups: [
                         {
                             title: 'First',
+                            name: "first",
                             fields: [
                                 {
                                     name: 'f1'
@@ -30,13 +31,14 @@
                             ],
                             transition: (context) => {
                                 if(context.fields.f1 === "goTo3")
-                                   context.goToStep(2);
+                                   context.goToStep("third");
                                 else
                                    context.next();
                             }
                         },
                         {
                             title: 'Second',
+                            name: "second",
                             orientation: 'horizontal',
                             fields: [
                                 {
@@ -49,6 +51,7 @@
                         },
                         {
                             title: 'Third',
+                            name: "third",
                             orientation: 'horizontal',
                             fields: [
                                 {
@@ -63,6 +66,7 @@
                         },
                         {
                             title: 'Fourth',
+                            name: "last",
                             orientation: 'horizontal',
                             fields: [
                                 {

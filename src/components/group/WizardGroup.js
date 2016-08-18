@@ -3,7 +3,7 @@ import BaseGroup from './BaseGroup';
 
 import { Button, Row, Col, ButtonToolbar } from 'react-bootstrap';
 
-const mergeJson = (arr) => arr.reduce((prev, actual) => Object.assign({}, prev, actual));
+const mergeJson = (arr) => arr.reduce((prev, actual) => ({...prev, ...actual}));
 
 
 class WizardGroup extends BaseGroup {
@@ -16,13 +16,23 @@ class WizardGroup extends BaseGroup {
 
     wizardContext = {
         fields: {},
-        goToStep: (position) => {
+        goToStep: (stepName) => {
+            let steps = this.getSteps();
+            let foundStep = steps.find((step) => step.name === stepName);
+
+            if(foundStep)
+                this.setState({position: foundStep.position})
+            else
+                console.error(`Step ${stepName} does not exists`);
+
+        },
+        goToPosition: (position) => {
             let { totalSteps } = this.state;
 
             if(position >= 0 && position <= totalSteps)
                 this.setState({position})
             else
-                console.log(`Position ${position} does not exists`);
+                console.error(`Position ${position} does not exists`);
         },
         next: () => {
             this.nextStep();
@@ -33,6 +43,8 @@ class WizardGroup extends BaseGroup {
         position: 0,
         totalSteps: this.props.layout.groups.length - 1
     };
+
+
 
     nextStep = () => {
         let { position } = this.state;
@@ -107,7 +119,7 @@ class WizardGroup extends BaseGroup {
         let content = this.getContent();
 
         // Maps each content to his transition function
-        let steps = layout.groups.map((group, index) => ({content: content[index], transition: group.transition}));
+        let steps = layout.groups.map((group, index) => ({content: content[index], transition: group.transition, name: group.name, position: index}));
 
         return steps;
     };
@@ -115,13 +127,11 @@ class WizardGroup extends BaseGroup {
     render() {
         let { position } = this.state;
 
-
         let steps = this.getSteps();
+
         let buttonSection = this.getButtonSection(steps);
 
         this.updateWizardContext();
-
-        console.log(JSON.stringify(this.wizardContext));
 
         return (
             <section>
