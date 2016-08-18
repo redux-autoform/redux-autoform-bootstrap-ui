@@ -30,7 +30,9 @@
                             ],
                             transition: (context) => {
                                 if(context.fields.f1 === "goTo3")
-                                   context.goToStep(3);
+                                   context.goToStep(2);
+                                else
+                                   context.next();
                             }
                         },
                         {
