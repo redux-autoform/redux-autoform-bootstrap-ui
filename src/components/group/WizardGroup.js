@@ -14,6 +14,7 @@ class WizardGroup extends BaseGroup {
         componentFactory: PropTypes.object.isRequired
     };
 
+    // Expose functions to the user in order to make the transitions, and the field values of the form
     wizardContext = {
         fields: {},
         goToStep: (stepName) => {
@@ -49,6 +50,7 @@ class WizardGroup extends BaseGroup {
         stepFlow: []
     };
 
+    // Saves an object containing the step position that started the flow and the position after that flow
     trackStepFlow = (position) => {
         let { stepFlow } = this.state;
 
@@ -62,6 +64,7 @@ class WizardGroup extends BaseGroup {
         console.log(JSON.stringify(stepFlow));
     };
 
+    // Get the last flow and set the step position to the step that initiated the flow to the current step position.
     backToFlow = () => {
         let { stepFlow } = this.state;
         let flowOnBack = stepFlow.pop();
@@ -72,6 +75,7 @@ class WizardGroup extends BaseGroup {
         })
     };
 
+    // Checks if the current step is the last step in stepFlow, if that's the case it returns true.
     isFlowInMyPosition = () => {
         let { stepFlow, position } = this.state;
         let { length } = stepFlow
@@ -100,6 +104,7 @@ class WizardGroup extends BaseGroup {
     updateWizardContext = () => {
         let { fields } = this.props;
 
+        // Reads each fields value of autoform and creates an object fieldName => fieldValue.
         this.wizardContext.fields = mergeJson(fields.map(field => ({[field.name]: field.reduxFormProps.value})));
 
     };
@@ -159,6 +164,7 @@ class WizardGroup extends BaseGroup {
         let content = this.getContent();
 
         // Maps each content to his transition function
+        // Each step has associated a name and a position.
         let steps = layout.groups.map((group, index) => ({content: content[index], transition: group.transition, name: group.name, position: index}));
 
         return steps;
