@@ -29,8 +29,8 @@
                                 }
                             ],
                             transition: (context) => {
-                                if(context.f1 === "Hola")
-                                   console.log(":D");
+                                if(context.fields.f1 === "goTo3")
+                                   context.goToStep(3);
                             }
                         },
                         {

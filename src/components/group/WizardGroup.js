@@ -3,6 +3,9 @@ import BaseGroup from './BaseGroup';
 
 import { Button, Row, Col, ButtonToolbar } from 'react-bootstrap';
 
+const mergeJson = (arr) => arr.reduce((prev, actual) => Object.assign({}, prev, actual));
+
+
 class WizardGroup extends BaseGroup {
     static propTypes = {
         component: PropTypes.string,
@@ -10,6 +13,21 @@ class WizardGroup extends BaseGroup {
         layout: PropTypes.object.isRequired,
         componentFactory: PropTypes.object.isRequired
     };
+
+    wizardContext = {
+        fields: {},
+        goToStep: (position) => {
+            let { totalSteps } = this.state;
+
+            if(position >= 0 && position <= totalSteps)
+                this.setState({position})
+            else
+                console.log(`Position ${position} does not exists`);
+        },
+        next: () => {
+            this.nextStep();
+        }
+    }
 
     state = {
         position: 0,
@@ -28,9 +46,18 @@ class WizardGroup extends BaseGroup {
         this.setState({position : position - 1})
     };
 
-    getButtonSection = () => {
+    updateWizardContext = () => {
+        let { fields } = this.props;
+
+        this.wizardContext.fields = mergeJson(fields.map(field => ({[field.name]: field.reduxFormProps.value})));
+
+    }
+
+    getButtonSection = (steps) => {
         let { position, totalSteps } = this.state;
         let { submitting } = this.props;
+
+        let currentStep = steps[position];
 
         let nextButton = null;
         let backButton = null;
@@ -46,7 +73,7 @@ class WizardGroup extends BaseGroup {
 
         if (position != totalSteps) {
             nextButton = (
-                <Button bsStyle="primary" bsSize="large" onClick={this.nextStep}>
+                <Button bsStyle="primary" bsSize="large" onClick={currentStep.transition? () => currentStep.transition(this.wizardContext) : this.nextStep}>
                     Next
                 </Button>
             );
@@ -88,8 +115,13 @@ class WizardGroup extends BaseGroup {
     render() {
         let { position } = this.state;
 
+
         let steps = this.getSteps();
-        let buttonSection = this.getButtonSection();
+        let buttonSection = this.getButtonSection(steps);
+
+        this.updateWizardContext();
+
+        console.log(JSON.stringify(this.wizardContext));
 
         return (
             <section>
