@@ -37,14 +37,15 @@
                     ]
                 },
                 {
-                    name: "Languages",
-                    displayName: "Languages",
+                    name: "Url",
+                    displayName: "Url",
                     type: "string",
-                    component: "Select",
+                    component: "Lookup",
+                    help: "Lists the React project open-issues",
                     options: {
-                        "url": "/api/languages",
-                        "label": "label",
-                        "value": "value"
+                        url: "https://api.github.com/repos/facebook/react/issues",
+                        valueKey: "id",
+                        labelKey: "title"
                     }
                 }
             ]

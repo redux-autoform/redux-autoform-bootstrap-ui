@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, {Component, PropTypes} from 'react';
 import FormGroup from './FormGroup';
 import FormControl from './FormControl';
 
@@ -12,15 +12,45 @@ class Input extends Component {
         error: PropTypes.string,
         addonBefore: PropTypes.string,
         addonAfter: PropTypes.string,
-        fieldLayout: PropTypes.string
+        fieldLayout: PropTypes.string,
+        componentClass: PropTypes.string,
+        inputType: PropTypes.string
     };
 
-    render() {
-        let { error, touched, displayName, name, help, fieldLayout, innerSize, children } = this.props;
-        let { value, placeholder, addonBefore, addonAfter, onChange, onBlur, componentClass, rows } = this.props;
+    static defaultProps = {
+        inputType: "text"
+    }
 
-        let formGroupProps = { error, touched, displayName, name, help, fieldLayout, innerSize };
-        let formControlProps = { value, name, placeholder, displayName, help, addonBefore, addonAfter, onChange, onBlur, componentClass, rows };
+    render() {
+        let {
+            error, touched, displayName, name, help, fieldLayout, innerSize, children, inputType,
+            value, placeholder, addonBefore, addonAfter, onChange, onBlur, componentClass, rows
+        } = this.props;
+
+        let formGroupProps = {
+            error,
+            touched,
+            displayName,
+            name,
+            help,
+            fieldLayout,
+            innerSize
+        };
+
+        let formControlProps = {
+            inputType,
+            value,
+            name,
+            placeholder,
+            displayName,
+            help,
+            addonBefore,
+            addonAfter,
+            onChange,
+            onBlur,
+            componentClass,
+            rows
+        };
 
         return (
             <FormGroup {...formGroupProps}>

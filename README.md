@@ -149,7 +149,8 @@ Specific metadata for the `Lookup` component. Common metadata is not listed.
 
 Metadata | Description
 --- | ---
-options | The options to display. Options are an array of objects with two properties: **value**: The actual value that is stored in the model. **text**: What is displayed to the user
+options (array) | The options to display. Options is an array of objects with two properties: **value**: The actual value that is stored in the model; **label**: What is displayed to the user
+options (object) | The options to display. Options is an object containing three properties: **url**: The URL to call for data. This call should return an array of objects. **valueKey**: In the resulting Array, this is the name of the property that should contain the actual value. **labelKey**: In the resulting Array, this is the name of the property that should contain the label.
 
 [Lookup demo](https://redux-autoform.github.io/redux-autoform-bootstrap-ui/demo.html?preset=componentsLookup).
 
