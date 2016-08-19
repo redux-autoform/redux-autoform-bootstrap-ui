@@ -78,6 +78,14 @@ export default [
         schema: require('./presets/componentsTextBoxFloat.txt')
     },
     {
+        name: 'componentsPassword',
+        displayName: 'Components - Password',
+        entityName: 'contact',
+        layoutName: '',
+        formTitle: 'Edit contact',
+        schema: require('./presets/componentsPassword.txt')
+    },
+    {
         name: 'componentsTextArea',
         displayName: 'Components - TextArea',
         entityName: 'contact',

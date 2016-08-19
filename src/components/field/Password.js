@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Input from  '../common/Input';
 
-class TextBox extends Component {
+class Password extends Component {
     static propTypes = {
         value: PropTypes.any,
         onChange: PropTypes.func.isRequired,
@@ -15,8 +15,8 @@ class TextBox extends Component {
     };
 
     render() {
-        return <Input componentClass="input" inputType="text" {...this.props}/>;
+        return <Input componentClass="input" inputType="password" {...this.props}/>;
     }
 }
 
-export default TextBox;
+export default Password;
