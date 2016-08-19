@@ -1,8 +1,5 @@
-import React, { Component, PropTypes } from 'react';
-import FormGroup from '../common/FormGroup';
+import React, {Component, PropTypes} from 'react';
 import Input from '../common/Input';
-import ReactSelect from 'react-select-plus';
-import fetch from 'isomorphic-fetch';
 
 class Select extends Component {
     static propTypes = {
@@ -17,7 +14,7 @@ class Select extends Component {
     };
 
     getOptions = () => {
-        let { options } = this.props;
+        let {options} = this.props;
 
         return options.map((item, index) => (
             <option key={index} value={item.value}>
@@ -26,45 +23,10 @@ class Select extends Component {
         ));
     };
 
-    fetchItems = () => {
-        const { options } = this.props;
-
-        return fetch(options.url)
-            .then(response => response.json())
-            .then(json => {
-                return { options: json }
-            });
-    };
-
     render() {
-        let { value, name, displayName, help, error, touched, onChange, onBlur, fieldLayout, options } = this.props;
-        let formGroupProps = { error, touched, displayName, name, help, fieldLayout };
-
-        if (options && Array.isArray(options)) {
-            return (
-                <Input componentClass="select" {...this.props}>
-                    { this.getOptions() }
-                </Input>
-            );
-            
-        } else if (options.url) {
-            let selectProps = {
-                value,
-                name,
-                onChange,
-                onBlur: (event) => onBlur(),
-                valueKey: options.value? options.value : 'value',
-                labelKey: options.label? options.label : 'label'
-            };
-
-            return (
-                <FormGroup {...formGroupProps}>
-                    <ReactSelect.Async {...selectProps} loadOptions={this.fetchItems}/>
-                </FormGroup>
-            );
-        }
-
-        return false;
+        return <Input componentClass="select" {...this.props}>
+            { this.getOptions() }
+        </Input>
     }
 }
 

@@ -93,6 +93,17 @@ Now the demo should be available here: [http://localhost:4000/](http://localhost
 
 ## Components
 
+### Common metadata
+
+Metadata that is common to most of the components.
+
+Metadata | Description
+--- | ---
+displayName | The user-friendly name for the field.
+component | Which component to use. 
+readOnly | Whether or not the component should be in read-only state.
+help | Additional help so the end-user knows what the field is about.
+
 ### TextBox
 
 Specific metadata for the `TextBox` component. Common metadata is not listed.
@@ -138,7 +149,8 @@ Specific metadata for the `Lookup` component. Common metadata is not listed.
 
 Metadata | Description
 --- | ---
-options | The options to display. Options are an array of objects with two properties: **value**: The actual value that is stored in the model. **text**: What is displayed to the user
+options (array) | The options to display. Options is an array of objects with two properties: **value**: The actual value that is stored in the model; **label**: What is displayed to the user
+options (object) | The options to display. Options is an object containing three properties: **url**: The URL to call for data. This call should return an array of objects. **valueKey**: In the resulting Array, this is the name of the property that should contain the actual value. **labelKey**: In the resulting Array, this is the name of the property that should contain the label.
 
 [Lookup demo](https://redux-autoform.github.io/redux-autoform-bootstrap-ui/demo.html?preset=componentsLookup).
 
