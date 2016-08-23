@@ -1,6 +1,7 @@
 import ComponentFactory from 'redux-autoform-utils/lib/factory/ComponentFactory';
 import TextBox from '../components/field/TextBox';
 import Password from '../components/field/Password';
+import Email from '../components/field/Email';
 import Select from '../components/field/Select';
 import TextArea from '../components/field/TextArea';
 import Group from '../components/group/Group';
@@ -29,6 +30,7 @@ class BootstrapFactory extends ComponentFactory {
     setBaseComponents = () => {
         this.registerFieldComponent('TextBox', ['string', 'int', 'float', 'datetime', 'date', 'time'], TextBox);
         this.registerFieldComponent('Password', ['string'], Password);
+        this.registerFieldComponent('Email', ['string'], Email);
         this.registerFieldComponent('Select', ['string'], Select);
         this.registerFieldComponent('Radio', ['string'], Radio);
         this.registerFieldComponent('Lookup', ['string'], Lookup);
