@@ -16,6 +16,20 @@ class LiveSchemaEditor extends Component {
         formOptionsActions: PropTypes.object.isRequired
     };
 
+    getButtonToolbar = () => {
+        const { metaForm } = this.props;
+        let layoutName = null;
+
+        if(metaForm && metaForm.layoutName)
+            layoutName = metaForm.layoutName.value;
+
+        if(layoutName === 'wizard'){
+            return () => <div></div>;
+        }else{
+            return ButtonToolbar;
+        }
+    }
+
     getAutoFormProps(formName, initialValues) {
         let { metaForm, formOptions } = this.props;
 
@@ -34,7 +48,7 @@ class LiveSchemaEditor extends Component {
         return {
             form: formName,
             fieldLayout: formOptions.fieldLayout,
-            buttonBar: ButtonToolbar,
+            buttonBar: this.getButtonToolbar(),
             schema:  eval('(' + formOptions.schema + ')') , // eval('(' + metaForm.schema.value + ')'),
             entityName: metaForm.entityName.value,
             layoutName: metaForm.layoutName.value,

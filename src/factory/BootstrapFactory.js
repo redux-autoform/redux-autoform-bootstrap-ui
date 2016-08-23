@@ -5,6 +5,7 @@ import Select from '../components/field/Select';
 import TextArea from '../components/field/TextArea';
 import Group from '../components/group/Group';
 import TabGroup from '../components/group/TabGroup';
+import WizardGroup from '../components/group/WizardGroup';
 import ArrayContainer from '../components/field/ArrayContainer';
 import DateTimePicker from '../components/field/DateTimePicker';
 import Lookup from '../components/field/Lookup';
@@ -19,9 +20,11 @@ import Root from '../components/common/Root';
 class BootstrapFactory extends ComponentFactory {
     constructor(config) {
         super();
+
         this.setBaseComponents();
         this.setDefaultConfiguration(config);
     }
+
     
     setBaseComponents = () => {
         this.registerFieldComponent('TextBox', ['string', 'int', 'float', 'datetime', 'date', 'time'], TextBox);
@@ -38,19 +41,20 @@ class BootstrapFactory extends ComponentFactory {
         this.registerFieldComponent('FileUpload', ['string'], FileUpload);
 
 
-
         this.registerGroupComponent('Group', Group);
         this.registerGroupComponent('TabGroup', TabGroup);
+        this.registerGroupComponent('WizardGroup', WizardGroup);
+
+
+        this.registerRootComponent("default", Root);
     };
     
     setDefaultConfiguration = (config) => {
         this.setDefaultFieldComponents(config);
         this.setDefaultGroupComponent('Group');
+        this.setCurrentRoot("default");
     };
 
-    getRoot = () => {
-        return Root;
-    }
 
 }
 
