@@ -1,6 +1,6 @@
 {
   "name": "redux-autoform-bootstrap-ui",
-  "version": "1.6.6-experimental",
+  "version": "1.6.7-experimental",
   "description": "Bootstrap UI implementation for redux-autoform",
   "main": "./lib/index.js",
   "scripts": {
