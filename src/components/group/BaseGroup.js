@@ -52,9 +52,12 @@ class BaseGroup extends Component {
     };
 
     getDefaultSize = (component, gridLength = 12) => {
-        let { layout } = this.props;
+        return (this.isHorizontal()) ? Math.floor(gridLength/component.length) : gridLength;
+    };
 
-        return layout.orientation == 'horizontal' ? Math.floor(gridLength/component.length) : gridLength;
+    isHorizontal = () => {
+        let { layout } = this.props;
+        return layout.orientation === 'horizontal';
     };
 
     getContent = () => {
@@ -71,11 +74,23 @@ class BaseGroup extends Component {
                 componentContent = component.component;
             }
 
-            return (
-                <div key={`component-${i}-wrapper`} className={`col-md-${size}`}>
-                    { componentContent }
-                </div>
-            );
+            if (this.isHorizontal()) {
+                return (
+                    <div key={`component-${i}-wrapper`} className={`col-md-${size}`}>
+                        {componentContent}
+                    </div>
+                );
+            } else {
+                return (
+                    <div key={`component-${i}-wrapper`} className="container-fluid">
+                        <div className="row">
+                            <div className={`col-md-${size}`}>
+                                {componentContent}
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
         });
     };
 }

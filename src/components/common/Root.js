@@ -11,7 +11,9 @@ const Root = ({fieldLayout, children, handleSubmit}) => {
     return (
         <div className="meta-form">
             <form onSubmit={handleSubmit} className={formClassName}>
-                { children }
+                <div className="container-fluid">
+                    {children}
+                </div>
             </form>
         </div>
     );

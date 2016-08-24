@@ -1,10 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import BaseGroup from './BaseGroup';
-
 import { Button, Row, Col, ButtonToolbar } from 'react-bootstrap';
 
 const mergeJson = (arr) => arr.reduce((prev, actual) => ({...prev, ...actual}));
-
 
 class WizardGroup extends BaseGroup {
     static propTypes = {
@@ -33,8 +31,8 @@ class WizardGroup extends BaseGroup {
             let { totalSteps } = this.state;
 
             if(position >= 0 && position <= totalSteps) {
-                this.trackStepFlow(position)
-                this.setState({position})
+                this.trackStepFlow(position);
+                this.setState({position});
             }
             else
                 console.error(`Position ${position} does not exists`);
@@ -42,7 +40,7 @@ class WizardGroup extends BaseGroup {
         next: () => {
             this.nextStep();
         }
-    }
+    };
 
     state = {
         position: 0,
@@ -51,12 +49,12 @@ class WizardGroup extends BaseGroup {
     };
 
     // Saves an object containing the step position that started the flow and the position after that flow
-    trackStepFlow = (position) => {
-        let { stepFlow } = this.state;
+    trackStepFlow = (positionToTrack) => {
+        let { stepFlow, position } = this.state;
 
         stepFlow.push({
-            originalPosition: this.state.position,
-            position
+            originalPosition: position,
+            positionToTrack
         });
 
         this.setState({stepFlow});
@@ -78,7 +76,7 @@ class WizardGroup extends BaseGroup {
     // Checks if the current step is the last step in stepFlow, if that's the case it returns true.
     isFlowInMyPosition = () => {
         let { stepFlow, position } = this.state;
-        let { length } = stepFlow
+        let { length } = stepFlow;
 
         if(length > 0)
             return stepFlow[length - 1].position == position;
@@ -108,7 +106,6 @@ class WizardGroup extends BaseGroup {
         this.wizardContext.fields = mergeJson(fields.map(field => ({[field.name]: field.reduxFormProps.value})));
 
     };
-
 
     getButtonSection = (steps) => {
         let { position, totalSteps } = this.state;
@@ -165,27 +162,28 @@ class WizardGroup extends BaseGroup {
 
         // Maps each content to his transition function
         // Each step has associated a name and a position.
-        let steps = layout.groups.map((group, index) => ({content: content[index], transition: group.transition, name: group.name, position: index}));
-
-        return steps;
+        return layout.groups.map((group, index) => ({
+            content: content[index],
+            transition: group.transition,
+            name: group.name,
+            position: index
+        }));
     };
 
     render() {
         let { position } = this.state;
-
         let steps = this.getSteps();
-
         let buttonSection = this.getButtonSection(steps);
 
         this.updateWizardContext();
 
         return (
             <section>
-                <div className="row">
+                <Row>
                     <div className="metaform-group">
                         {steps[position].content}
                     </div>
-                </div>
+                </Row>
                 {buttonSection}
             </section>
         );

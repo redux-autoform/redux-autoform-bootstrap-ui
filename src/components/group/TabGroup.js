@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import BaseGroup from './BaseGroup';
-import { Nav, NavItem } from 'react-bootstrap';
+import { Nav, NavItem, Row } from 'react-bootstrap';
 
 class TabGroup extends BaseGroup {
 	static propTypes = {
@@ -39,7 +39,6 @@ class TabGroup extends BaseGroup {
             });
 
         } else if (layout.groups) {
-
             components = layout.groups.map(group => {
                 group = {...group, headLess: true};
 
@@ -59,18 +58,16 @@ class TabGroup extends BaseGroup {
         return components;
     };
 
-	onNavItemSelected = (eventKey) => {
-		this.setState({ position: eventKey });
-	};
+	onNavItemSelected = (eventKey) => this.setState({position: eventKey});
 
 	render() {
-		let { layout } = this.props;
-		let { position } = this.state;
+		let {layout} = this.props;
+		let {position} = this.state;
 		let content = this.getContent();
 
 		return (
 			<section>
-				<div className="row">
+				<Row>
 					<div className="metaform-group">
 						<Nav bsStyle="tabs" activeKey={position} onSelect={this.onNavItemSelected} navbar justified>
 							{
@@ -82,10 +79,10 @@ class TabGroup extends BaseGroup {
 							}
 						</Nav>
 						<div className="metaform-group-content">
-							{ content[position] }
+							{content[position]}
 						</div>
 					</div>
-				</div>
+				</Row>
 			</section>
 		);
 	}

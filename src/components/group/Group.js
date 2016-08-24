@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import BaseGroup from './BaseGroup';
+import { Row } from 'react-bootstrap';
 
 class Group extends BaseGroup {
     static propTypes = {
@@ -30,14 +31,14 @@ class Group extends BaseGroup {
 
         return (
             <section style={style}>
-                <div className='row'>
+                <Row>
                     <div className="metaform-group">
                         { header }
                         <div className="metaform-group-content">
                             { content }
                         </div>
                     </div>
-                </div>
+                </Row>
             </section>
         );
 
