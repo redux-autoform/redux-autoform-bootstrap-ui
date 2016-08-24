@@ -11,7 +11,7 @@ const VerticalComponent = ({children, size}) => (
 );
 
 VerticalComponent.propTypes = {
-	children: PropTypes.object.isRequired,
+	children: PropTypes.object,
 	size: PropTypes.number
 };
 

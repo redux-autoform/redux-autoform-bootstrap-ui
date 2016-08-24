@@ -64,29 +64,33 @@ class BaseGroup extends Component {
         return layout.orientation === 'horizontal';
     };
 
+    isVisible = (component) => {
+        return component.data.visible !== false;
+    };
+
     getContent = () => {
         let components = this.getComponents();
 
-        return components.map((component, i) => {
+        return components.map((component, index) => {
             let content, size;
 
-            // invisible components should be hidden
-            if (component.data.visible === false) {
-                content = null;
-            } else {
+            if (this.isVisible(component)) {
                 size = this.getSize(component);
                 content = component.component;
+            } else {
+                // invisible components should be hidden
+                content = null;
             }
 
             if (this.isHorizontal()) {
                 return (
-                    <HorizontalComponent key={`component-${i}-wrapper`} size={size}>
+                    <HorizontalComponent key={`component-${index}-wrapper`} size={size}>
                         {content}
                     </HorizontalComponent>
                 );
             } else {
                 return (
-                    <VerticalComponent key={`component-${i}-wrapper`} size={size}>
+                    <VerticalComponent key={`component-${index}-wrapper`} size={size}>
                         {content}
                     </VerticalComponent>
                 );
