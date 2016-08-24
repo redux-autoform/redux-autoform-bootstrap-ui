@@ -1,4 +1,6 @@
 import React, { Component, PropTypes } from 'react';
+import HorizontalComponent from '../common/HorizontalComponent';
+import VerticalComponent from '../common/VerticalComponent';
 
 class BaseGroup extends Component {
     static propTypes = {
@@ -31,7 +33,6 @@ class BaseGroup extends Component {
                     component: componentFactory.buildFieldComponent(fieldMetadata)
                 }
             });
-
         } else if (layout.groups) {
 
             components = layout.groups.map(group => {
@@ -51,8 +52,9 @@ class BaseGroup extends Component {
         return components;
     };
 
-    getDefaultSize = (component, gridLength = 12) => {
-        return (this.isHorizontal()) ? Math.floor(gridLength/component.length) : gridLength;
+    getSize = (component, length = 12) => {
+        let defaultSize = (this.isHorizontal()) ? Math.floor(length/component.length) : length;
+        return component.data.size || defaultSize;
     };
 
     isHorizontal = () => {
@@ -64,31 +66,27 @@ class BaseGroup extends Component {
         let components = this.getComponents();
 
         return components.map((component, i) => {
-            let componentContent, size = 12;
+            let content, size;
 
             // invisible components should be hidden
             if (component.data.visible === false) {
-                componentContent = null;
+                content = null;
             } else {
-                size = component.data.size || this.getDefaultSize(component);
-                componentContent = component.component;
+                size = this.getSize(component);
+                content = component.component;
             }
 
             if (this.isHorizontal()) {
                 return (
-                    <div key={`component-${i}-wrapper`} className={`col-md-${size}`}>
-                        {componentContent}
-                    </div>
+                    <HorizontalComponent key={`component-${i}-wrapper`} size={size}>
+                        {content}
+                    </HorizontalComponent>
                 );
             } else {
                 return (
-                    <div key={`component-${i}-wrapper`} className="container-fluid">
-                        <div className="row">
-                            <div className={`col-md-${size}`}>
-                                {componentContent}
-                            </div>
-                        </div>
-                    </div>
+                    <VerticalComponent key={`component-${i}-wrapper`} size={size}>
+                        {content}
+                    </VerticalComponent>
                 );
             }
         });
