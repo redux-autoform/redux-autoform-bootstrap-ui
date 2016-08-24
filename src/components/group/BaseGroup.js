@@ -52,8 +52,8 @@ class BaseGroup extends Component {
         return components;
     };
 
-    getSize = (component, length = 12) => {
-        let defaultSize = (this.isHorizontal()) ? Math.floor(length/component.length) : length;
+    getSize = (component) => {
+        let defaultSize = (this.isHorizontal()) ? Math.floor(12/component.length) : 12;
         return component.data.size || defaultSize;
     };
 
