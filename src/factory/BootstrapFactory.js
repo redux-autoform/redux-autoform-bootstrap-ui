@@ -1,10 +1,12 @@
 import ComponentFactory from 'redux-autoform-utils/lib/factory/ComponentFactory';
 import TextBox from '../components/field/TextBox';
 import Password from '../components/field/Password';
+import Email from '../components/field/Email';
 import Select from '../components/field/Select';
 import TextArea from '../components/field/TextArea';
 import Group from '../components/group/Group';
 import TabGroup from '../components/group/TabGroup';
+import WizardGroup from '../components/group/WizardGroup';
 import ArrayContainer from '../components/field/ArrayContainer';
 import DateTimePicker from '../components/field/DateTimePicker';
 import Lookup from '../components/field/Lookup';
@@ -19,13 +21,16 @@ import Root from '../components/common/Root';
 class BootstrapFactory extends ComponentFactory {
     constructor(config) {
         super();
+
         this.setBaseComponents();
         this.setDefaultConfiguration(config);
     }
+
     
     setBaseComponents = () => {
         this.registerFieldComponent('TextBox', ['string', 'int', 'float', 'datetime', 'date', 'time'], TextBox);
         this.registerFieldComponent('Password', ['string'], Password);
+        this.registerFieldComponent('Email', ['string'], Email);
         this.registerFieldComponent('Select', ['string'], Select);
         this.registerFieldComponent('Radio', ['string'], Radio);
         this.registerFieldComponent('Lookup', ['string'], Lookup);
@@ -38,19 +43,20 @@ class BootstrapFactory extends ComponentFactory {
         this.registerFieldComponent('FileUpload', ['string'], FileUpload);
 
 
-
         this.registerGroupComponent('Group', Group);
         this.registerGroupComponent('TabGroup', TabGroup);
+        this.registerGroupComponent('WizardGroup', WizardGroup);
+
+
+        this.registerRootComponent("default", Root);
     };
     
     setDefaultConfiguration = (config) => {
         this.setDefaultFieldComponents(config);
         this.setDefaultGroupComponent('Group');
+        this.setCurrentRoot("default");
     };
 
-    getRoot = () => {
-        return Root;
-    }
 
 }
 

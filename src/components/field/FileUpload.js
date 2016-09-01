@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, {Component, PropTypes} from 'react';
 import DropZone from '../common/DropZone';
 import GlyphButton from '../common/GlyphButton';
 import FileInfo from '../common/FileInfo';
@@ -8,6 +8,7 @@ import fetch from 'isomorphic-fetch';
 
 export default class FileUpload extends Component {
 	static propTypes = {
+		onChange: PropTypes.func.isRequired,
 		url: PropTypes.string.isRequired
 	};
 
@@ -23,14 +24,14 @@ export default class FileUpload extends Component {
 		//TODO filter to avoid duplicates
 		let fileArray = [...files, ...this.state.files];
 
-		this.setState({files: fileArray});
-        this.setState({disableUpload: false});
+		this.syncFields(fileArray);
+		this.setState({files: fileArray, disableUpload: false});
     };
 
 	onClick = () => {
 		// TODO Handle response status for upload service
-		const { files } = this.state;
-		const { url } = this.props;
+		const {files} = this.state;
+		const {url} = this.props;
 
 		let fileData = new FormData();
 
@@ -44,9 +45,9 @@ export default class FileUpload extends Component {
 		})
 		.then(response => response.json())
         .then(({status, message}) => this.setState({
-        	status: status,
-			message: message,
-			alertVisible: true
+	        status: status,
+	        message: message,
+	        alertVisible: true
         }));
 
 		setTimeout(() => this.dismissAlert(), 4000);
@@ -60,8 +61,18 @@ export default class FileUpload extends Component {
 		let { files } = this.state;
 		files.splice(position, 1);
 
-		this.setState({files: files});
-        this.setState({disableUpload: files.length == 0});
+		this.syncFields(files);
+		this.setState({files: files, disableUpload: files.length == 0});
+	};
+
+	syncFields = (files) => {
+		let {onChange} = this.props;
+
+		let fileNames = files.map((file) => {
+			return file.name;
+		});
+
+		onChange(fileNames);
 	};
 
 	openDropZone = () => {
