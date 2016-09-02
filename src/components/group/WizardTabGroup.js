@@ -63,7 +63,7 @@ class TabGroup extends BaseGroup {
 		if (position != 0) {
 			backButton = (
 				<Button bsStyle="primary" bsSize="large" onClick={this.backStep}>
-					Back
+					Previous
 				</Button>
 			);
 		}
