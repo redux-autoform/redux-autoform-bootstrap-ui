@@ -62,7 +62,7 @@ class TabGroup extends BaseGroup {
 
 		if (position != 0) {
 			backButton = (
-				<Button bsStyle="primary" bsSize="large" onClick={this.backStep}>
+				<Button bsStyle="primary" onClick={this.backStep}>
 					Previous
 				</Button>
 			);
@@ -70,7 +70,7 @@ class TabGroup extends BaseGroup {
 
 		if (position != totalSteps) {
 			nextButton = (
-				<Button bsStyle="primary" bsSize="large" onClick={this.nextStep}>
+				<Button bsStyle="primary" onClick={this.nextStep}>
 					Next
 				</Button>
 			);
