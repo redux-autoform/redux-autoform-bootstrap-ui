@@ -1,6 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import BaseGroup from './BaseGroup';
-import { Nav, NavItem, Row } from 'react-bootstrap';
+import { Nav, NavItem, Row, Alert } from 'react-bootstrap';
+
+const mergeJson = (arr) => arr.reduce((prev, actual) => ({...prev, ...actual}));
+const intersect = (a, b) => new Set([...a].filter(x => b.has(x)));
 
 class TabGroup extends BaseGroup {
 	static propTypes = {
@@ -10,8 +13,13 @@ class TabGroup extends BaseGroup {
 		componentFactory: PropTypes.object.isRequired
 	};
 
+	tabsContext = {
+		fields: []
+	};
+
 	state = {
-		position: 0
+		position: 0,
+		fieldsMap: []
 	};
 
     getComponents = () => {
@@ -42,12 +50,63 @@ class TabGroup extends BaseGroup {
         return components;
     };
 
+	updateTabContext = () => {
+		let { fields } = this.props;
+
+		// Reads each field value of autoform and creates an object fieldName => error.
+		this.tabsContext.fields = Object.keys(mergeJson(fields.map(field => {
+			if (field.reduxFormProps.touched) {
+				return (field.reduxFormProps.error)? {[field.name]: field.reduxFormProps.error} : null
+			}
+
+			return null;
+		})));
+	};
+
+	getFieldsByTabArray = () => {
+		let { layout } = this.props;
+
+		let tabMap = layout.groups.map((group, index) => ({[index]: group.fields}));
+		tabMap.forEach((tabNum, index) => {
+			tabNum[index] = tabNum[index].map(field => field.name);
+		});
+
+		return mergeJson(tabMap);
+	};
+
+	getStyle = (position) => {
+		const { fieldsMap } = this.state;
+		let style = "";
+
+		if(fieldsMap.length == 0)
+			return style;
+
+		let fieldsByTab = fieldsMap[position];
+
+		let hasErrors = intersect(new Set(fieldsByTab), new Set(this.tabsContext.fields)).size > 0;
+
+		if(hasErrors)
+			style = "alert-danger";
+
+		console.info(JSON.stringify(style));
+
+		return style;
+	};
+
+	componentDidMount() {
+		this.setState({
+			fieldsMap: this.getFieldsByTabArray()
+		});
+	}
+
 	onNavItemSelected = (key) => this.setState({position: key});
 
 	render() {
 		let {layout} = this.props;
 		let {position} = this.state;
 		let content = this.getContent();
+
+		this.updateTabContext();
 
 		return (
 			<section>
@@ -57,7 +116,9 @@ class TabGroup extends BaseGroup {
 							{
 								layout.groups.map(({ title }, index) => (
 									<NavItem key={index} eventKey={index}>
-										{title}
+										<div className={this.getStyle(index)}>
+											{title}
+										</div>
 									</NavItem>
 								))
 							}
