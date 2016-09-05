@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import BaseGroup from './BaseGroup';
-import { Nav, NavItem, Row } from 'react-bootstrap';
+import { Nav, NavItem, Button, Row, Col, ButtonToolbar } from 'react-bootstrap';
 
 class TabGroup extends BaseGroup {
 	static propTypes = {
@@ -11,7 +11,8 @@ class TabGroup extends BaseGroup {
 	};
 
 	state = {
-		position: 0
+		position: 0,
+		totalSteps: this.props.layout.groups.length - 1
 	};
 
     getComponents = () => {
@@ -44,10 +45,56 @@ class TabGroup extends BaseGroup {
 
 	onNavItemSelected = (key) => this.setState({position: key});
 
+	nextStep = () => {
+		let { position } = this.state;
+		this.setState({position : position + 1})
+	};
+
+	backStep = () => {
+		let { position } = this.state;
+		this.setState({position : position - 1})
+	};
+
+	getButtonSection = () => {
+		let { position, totalSteps } = this.state;
+		let nextButton = null;
+		let backButton = null;
+
+		if (position != 0) {
+			backButton = (
+				<Button bsStyle="primary" onClick={this.backStep}>
+					Previous
+				</Button>
+			);
+		}
+
+		if (position != totalSteps) {
+			nextButton = (
+				<Button bsStyle="primary" onClick={this.nextStep}>
+					Next
+				</Button>
+			);
+		}
+
+		return (
+			<Row>
+				<Col xs={6} md={4}/>
+				<Col xs={6} md={4}/>
+				<Col xs={6} md={4}>
+					<ButtonToolbar className="button-toolbar pull-right">
+						{backButton}
+						{nextButton}
+					</ButtonToolbar>
+				</Col>
+			</Row>
+		)
+	};
+
 	render() {
 		let {layout} = this.props;
 		let {position} = this.state;
 		let content = this.getContent();
+		let buttonSection = this.getButtonSection();
 
 		return (
 			<section>
@@ -67,6 +114,7 @@ class TabGroup extends BaseGroup {
 						</div>
 					</div>
 				</Row>
+                {buttonSection}
 			</section>
 		);
 	}

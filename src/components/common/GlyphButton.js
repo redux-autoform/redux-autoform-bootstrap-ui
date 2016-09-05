@@ -14,7 +14,7 @@ class GlyphButton extends Component {
 
     static defaultProps = {
         disabled: false
-    }
+    };
 
     handleSave = () => {
         let { onClick } = this.props;

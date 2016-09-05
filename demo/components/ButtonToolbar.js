@@ -8,7 +8,7 @@ class Layout extends Component {
 
         return (
             <ButtonToolbar className="button-toolbar">
-                <Button className="pull-right" bsStyle="success" bsSize="large" type="submit"  disabled={submitting}>
+                <Button className="pull-right" bsStyle="success" type="submit"  disabled={submitting}>
                     Submit
                 </Button>
             </ButtonToolbar>
