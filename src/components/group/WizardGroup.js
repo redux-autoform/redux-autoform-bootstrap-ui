@@ -49,12 +49,12 @@ class WizardGroup extends BaseGroup {
     };
 
     // Saves an object containing the step position that started the flow and the position after that flow
-    trackStepFlow = (positionToTrack) => {
-        let { stepFlow, position } = this.state;
+    trackStepFlow = (position) => {
+        let { stepFlow } = this.state;
 
         stepFlow.push({
-            originalPosition: position,
-            positionToTrack
+            originalPosition: this.state.position,
+            position
         });
 
         this.setState({stepFlow});
