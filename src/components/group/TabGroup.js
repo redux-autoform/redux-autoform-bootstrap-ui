@@ -99,8 +99,6 @@ class TabGroup extends BaseGroup {
 		if(hasErrors)
 			style = "alert-danger";
 
-		console.info(JSON.stringify(style));
-
 		return style;
 	};
 
@@ -115,8 +113,8 @@ class TabGroup extends BaseGroup {
 	onNavItemSelected = (key) => this.setState({position: key});
 
 	render() {
-		let {layout} = this.props;
-		let {position} = this.state;
+		let { layout } = this.props;
+		let { position } = this.state;
 		let content = this.getContent();
 
 		this.updateTabContext();
