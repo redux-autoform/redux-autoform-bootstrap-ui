@@ -63,10 +63,21 @@ class TabGroup extends BaseGroup {
 		})));
 	};
 
-	getFieldsByTabArray = () => {
-		let { layout } = this.props;
+	getFieldsByTabArray = (layout) => {
+		let tabMap = layout.groups.map((group, index) => {
+			let json;
 
-		let tabMap = layout.groups.map((group, index) => ({[index]: group.fields}));
+			if (group.groups) {
+				json = this.getFieldsByTabArray(group.groups);
+			} else {
+				json = {
+					[index]: group.fields
+				}
+			}
+
+			return json;
+		});
+
 		tabMap.forEach((tabNum, index) => {
 			tabNum[index] = tabNum[index].map(field => field.name);
 		});
@@ -94,8 +105,10 @@ class TabGroup extends BaseGroup {
 	};
 
 	componentDidMount() {
+		let { layout } = this.props;
+
 		this.setState({
-			fieldsMap: this.getFieldsByTabArray()
+			fieldsMap: this.getFieldsByTabArray(layout)
 		});
 	}
 
