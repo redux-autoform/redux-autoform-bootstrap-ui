@@ -12,6 +12,7 @@ import FieldGroup from '../components/field/FieldGroup';
 import Checkbox from '../components/field/CheckBox';
 import Radio from '../components/field/Radio';
 import FileUpload from '../components/field/FileUpload';
+import EntityContainer from '../components/field/EntityContainer';
 
 import Group from '../components/group/Group';
 import TabGroup from '../components/group/TabGroup';
@@ -43,6 +44,7 @@ class BootstrapFactory extends ComponentFactory {
         this.registerFieldComponent('Static', ['string', 'int', 'float', 'datetime', 'date', 'time', 'bool'], Static);
         this.registerFieldComponent('FieldGroup', ['group'], FieldGroup);
         this.registerFieldComponent('FileUpload', ['string'], FileUpload);
+        this.registerFieldComponent('EntityContainer', ['entity'], EntityContainer);
 
         this.registerGroupComponent('Group', Group);
         this.registerGroupComponent('TabGroup', TabGroup);

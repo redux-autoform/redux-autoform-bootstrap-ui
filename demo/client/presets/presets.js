@@ -150,6 +150,13 @@ export default [
 		schema: require('./base/components/Lookup.txt')
 	},
 	{
+		name: 'EntityContainer',
+		displayName: 'Components - EntityContainer',
+		entityName: 'contact',
+		formTitle: 'Edit contact',
+		schema: require('./base/components/EntityContainer.txt')
+	},
+	{
 		name: 'ArrayContainer',
 		displayName: 'Components - ArrayContainer',
 		entityName: 'contact',
