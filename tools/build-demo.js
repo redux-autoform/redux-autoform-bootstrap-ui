@@ -12,8 +12,8 @@ require.extensions['.html'] = function (module, filename) {
 };
 
 const repoRoot = path.resolve(__dirname, '../');
-const demoBuiltRoot = path.join(repoRoot, 'demo-built');
-const demoBuilt = path.join(demoBuiltRoot, 'redux-autoform-bootstrap-ui');
+const demoBuilt = path.join(repoRoot, 'demo-built');
+//const demoBuilt = path.join(demoBuiltRoot, 'redux-autoform-bootstrap-ui');
 
 const licenseSrc = path.join(repoRoot, 'LICENSE');
 const licenseDest = path.join(demoBuilt, 'LICENSE');
@@ -25,8 +25,7 @@ if (process.env.NODE_ENV !== 'production') {
     process.exit();
 }
 
-rimraf(demoBuiltRoot)
-    .then(() => fsep.mkdir(demoBuiltRoot))
+rimraf(demoBuilt)
     .then(() => fsep.mkdir(demoBuilt))
     .then(() => {
         console.log('writing static page files...');
