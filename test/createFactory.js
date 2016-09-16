@@ -6,6 +6,7 @@ describe("Factory creation", () => {
 
         let correctConfig = {
             'string': 'TextBox',
+            'entity': 'EntityContainer',
             'array': 'ArrayContainer',
             'datetime': 'DateTimePicker',
             'time': 'DateTimePicker',
@@ -23,6 +24,7 @@ describe("Factory creation", () => {
     it("User requests a details factory", (done) => {
         let correctConfig = {
             'string': 'Static',
+            'entity': 'EntityContainer',
             'array': 'ArrayContainer',
             'datetime': 'Static',
             'time': 'Static',
