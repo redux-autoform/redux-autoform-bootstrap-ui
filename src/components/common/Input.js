@@ -19,13 +19,17 @@ class Input extends Component {
 
     static defaultProps = {
         inputType: "text"
-    }
+    };
 
     render() {
         let {
             error, touched, displayName, name, help, fieldLayout, innerSize, children, inputType,
-            value, placeholder, addonBefore, addonAfter, onChange, onBlur, componentClass, rows
+            value, placeholder, addonBefore, addonAfter, onChange, onBlur, componentClass, rows,
+            min, max
         } = this.props;
+
+        console.info("This is the min -> " + min);
+        console.info("This is the max -> " + max);
 
         let formGroupProps = {
             error,
@@ -49,12 +53,12 @@ class Input extends Component {
             onChange,
             onBlur,
             componentClass,
-            rows
+            rows,
         };
 
         return (
             <FormGroup {...formGroupProps}>
-                <FormControl {...formControlProps}>
+                <FormControl {...formControlProps} min={min} max={max}>
                     { children }
                 </FormControl>
             </FormGroup>

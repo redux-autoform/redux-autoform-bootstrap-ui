@@ -13,6 +13,7 @@ import Checkbox from '../components/field/CheckBox';
 import Radio from '../components/field/Radio';
 import FileUpload from '../components/field/FileUpload';
 import EntityContainer from '../components/field/EntityContainer';
+import Number from '../components/field/Number';
 
 import Group from '../components/group/Group';
 import TabGroup from '../components/group/TabGroup';
@@ -24,11 +25,9 @@ import Root from '../components/common/Root';
 class BootstrapFactory extends ComponentFactory {
     constructor(config) {
         super();
-
         this.setBaseComponents();
         this.setDefaultConfiguration(config);
     }
-
     
     setBaseComponents = () => {
         this.registerFieldComponent('TextBox', ['string', 'int', 'float', 'datetime', 'date', 'time'], TextBox);
@@ -45,6 +44,7 @@ class BootstrapFactory extends ComponentFactory {
         this.registerFieldComponent('FieldGroup', ['group'], FieldGroup);
         this.registerFieldComponent('FileUpload', ['string'], FileUpload);
         this.registerFieldComponent('EntityContainer', ['entity'], EntityContainer);
+        this.registerFieldComponent('Number', ['int'], Number);
 
         this.registerGroupComponent('Group', Group);
         this.registerGroupComponent('TabGroup', TabGroup);
