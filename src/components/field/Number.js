@@ -11,7 +11,9 @@ class Number extends Component {
         error: PropTypes.string,
         addonBefore: PropTypes.string,
         addonAfter: PropTypes.string,
-        fieldLayout: PropTypes.string
+        fieldLayout: PropTypes.string,
+        min: PropTypes.number,
+        max: PropTypes.number
     };
 
     render() {

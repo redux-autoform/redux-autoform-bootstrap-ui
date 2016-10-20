@@ -28,9 +28,6 @@ class Input extends Component {
             min, max
         } = this.props;
 
-        console.info("This is the min -> " + min);
-        console.info("This is the max -> " + max);
-
         let formGroupProps = {
             error,
             touched,
@@ -54,11 +51,13 @@ class Input extends Component {
             onBlur,
             componentClass,
             rows,
+            min,
+            max
         };
 
         return (
             <FormGroup {...formGroupProps}>
-                <FormControl {...formControlProps} min={min} max={max}>
+                <FormControl {...formControlProps}>
                     { children }
                 </FormControl>
             </FormGroup>

@@ -24,8 +24,8 @@ class FormControl extends Component {
     };
 
     getInput = () => {
-        let { value, placeholder, componentClass, children, rows, inputType } = this.props;
-        let formControlProps = { value, placeholder, componentClass, rows };
+        let { value, placeholder, componentClass, children, rows, inputType, min, max } = this.props;
+        let formControlProps = { value, placeholder, componentClass, rows, min, max };
         
         return (
             <BootstrapFormControl type={inputType} ref="input" onChange={this.handleChange} onBlur={this.handleBlur} {...formControlProps}>
