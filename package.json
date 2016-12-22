@@ -68,7 +68,7 @@
     "mocha": "^3.0.0",
     "moment": "^2.14.1",
     "multer": "^1.2.0",
-    "npm": "^3.3.4",
+    "npm": "^4.0.2",
     "numbro": "^1.9.1",
     "path": "^0.12.7",
     "phantomjs-prebuilt": "^2.1.7",
