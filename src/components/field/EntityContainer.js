@@ -20,7 +20,7 @@ class EntityContainer extends Component {
 
     _renderComponents = () => {
         let { componentFactory, layout, fields, disabled } = this.props;
-        fields = fields.map((field)=>({disabled, ...field}));
+        fields = fields.map((field)=>({ ...field, disabled}));
         return componentFactory.buildGroupComponent({
             component: layout.component,
             layout: layout,

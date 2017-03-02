@@ -54,7 +54,7 @@ class ArrayContainer extends Component {
     buildGroupComponent = (field) => {
         let { componentFactory, layout, disabled } = this.props;
 
-        field = field.map((field)=>( { disabled, ...field} ));
+        field = field.map((field)=>( { ...field, disabled} ));
 
         return componentFactory.buildGroupComponent({
             component: layout.component,
