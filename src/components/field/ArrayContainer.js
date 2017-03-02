@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import GlyphButton from '../common/GlyphButton.js';
 import Alert from 'react-bootstrap/lib/Alert';
+import Button from 'react-bootstrap/lib/Button'
 import FormGroup from '../common/FormGroup';
 import ArrayContainerItem from '../common/ArrayContainerItem';
 
@@ -51,8 +52,10 @@ class ArrayContainer extends Component {
     };
     
     buildGroupComponent = (field) => {
-        let { componentFactory, layout } = this.props;
-        
+        let { componentFactory, layout, disabled } = this.props;
+
+        field = field.map((field)=>( { disabled, ...field} ));
+
         return componentFactory.buildGroupComponent({
             component: layout.component,
             layout: layout,
@@ -63,7 +66,7 @@ class ArrayContainer extends Component {
     
     getComponents = () => {
         let { fields } = this.props;
-        
+
         return fields.map((field, index) => (
             <ArrayContainerItem key={index} index={index} onAction={this.handleItemAction}>
                 { this.buildGroupComponent(field) }
@@ -72,7 +75,7 @@ class ArrayContainer extends Component {
     };
     
     getAddBar = () => {
-        let { addText } = this.props;
+        let { addText, disabled } = this.props;
         
         let text = addText ? addText : "Add";
         let components = this.getComponents();
@@ -81,7 +84,7 @@ class ArrayContainer extends Component {
             return (
                 <div className="add-bar">
                     <span>
-                        <GlyphButton glyph="plus" text={text} bsSize="small" onClick={this.handleAdd}/>
+                        <GlyphButton glyph="plus" text={text} bsSize="small" onClick={this.handleAdd} disabled={disabled}/>
                     </span>
                 </div>
             ); 
@@ -93,6 +96,7 @@ class ArrayContainer extends Component {
     
     getAllComponents = () => {
         //TODO: We should replace a for button!
+        const { disabled } = this.props;
         let components = this.getComponents();
         
         if (components.length) {
@@ -100,7 +104,7 @@ class ArrayContainer extends Component {
         } else {
             return (
                 <Alert bsStyle="warning">
-                    This array is empty. Consider <a onClick={ this.handleAdd }>adding a new item</a>.
+                    This array is empty. Consider <Button bsStyle="link" disabled={disabled} onClick={ this.handleAdd }>adding a new item</Button>.
                 </Alert>
             );
         }
