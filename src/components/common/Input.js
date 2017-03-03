@@ -25,7 +25,7 @@ class Input extends Component {
         let {
             error, touched, displayName, name, help, fieldLayout, innerSize, children, inputType,
             value, placeholder, addonBefore, addonAfter, onChange, onBlur, componentClass, rows,
-            min, max
+            min, max, disabled
         } = this.props;
 
         let formGroupProps = {
@@ -52,7 +52,8 @@ class Input extends Component {
             componentClass,
             rows,
             min,
-            max
+            max,
+            disabled
         };
 
         return (

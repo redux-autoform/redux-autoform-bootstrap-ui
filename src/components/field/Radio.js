@@ -9,10 +9,10 @@ class Radio extends Component {
     };
 
     getOptions = (value) => {
-        let { options, name, fieldLayout } = this.props;
+        let { options, name, fieldLayout, disabled } = this.props;
 
         // these props don't vary per item
-        let invariantRadioProps = { inline: fieldLayout == 'inline', name, onChange: this.handleChange };
+        let invariantRadioProps = { inline: fieldLayout == 'inline', name, onChange: this.handleChange, disabled };
 
         return options.map((item, index) => (
             <BootstrapRadio key={index} value={item.value}  checked={item.value == value} {...invariantRadioProps}>

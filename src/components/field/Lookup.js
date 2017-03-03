@@ -14,7 +14,7 @@ class Lookup extends Component {
     };
 
     render() {
-        let {value, name, displayName, help, error, touched, onChange, onBlur, options, fieldLayout} = this.props;
+        let {value, name, displayName, help, error, touched, onChange, onBlur, options, fieldLayout, disabled} = this.props;
         let formGroupProps = {error, touched, displayName, name, help, fieldLayout};
         let selectProps;
 
@@ -23,6 +23,7 @@ class Lookup extends Component {
                 options,
                 value,
                 name,
+                disabled,
                 onChange,
                 onBlur: (event) => onBlur()
             };

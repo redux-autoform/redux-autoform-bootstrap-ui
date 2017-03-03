@@ -79,7 +79,7 @@ class DateTimePicker extends Component {
     };
 
     render() {
-        let { value, name, displayName, help, error, touched, onBlur, format, type, fieldLayout } = this.props;
+        let { value, name, displayName, help, error, touched, onBlur, format, type, fieldLayout, disabled } = this.props;
         let localizer = getDateLocalizer();
 
         if (typeof value == 'string') {
@@ -91,7 +91,7 @@ class DateTimePicker extends Component {
             }
         }
 
-        let reactWidgetsProps = { value, displayName, onChange: this.onChange, onBlur, format };
+        let reactWidgetsProps = { value, displayName, onChange: this.onChange, onBlur, format, disabled };
         let formGroupProps = { error, touched, displayName, name, help, fieldLayout };
 
         this.setReactWidgetsProps(reactWidgetsProps, type);
