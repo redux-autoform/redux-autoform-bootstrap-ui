@@ -64,7 +64,7 @@
     "isparta": "^4.0.0",
     "json-loader": "^0.5.4",
     "less": "^2.7.1",
-    "less-loader": "^2.2.3",
+    "less-loader": "^4.0.2",
     "mocha": "^3.0.0",
     "moment": "^2.14.1",
     "multer": "^1.2.0",
