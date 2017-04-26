@@ -33,7 +33,7 @@
     "font-awesome": "^4.6.3",
     "isomorphic-fetch": "^2.2.1",
     "react": "^15.1.0",
-    "react-bootstrap": "^0.30.0",
+    "react-bootstrap": "^0.31.0",
     "react-dom": "^15.2.1",
     "react-redux": "^5.0.0",
     "react-select-plus": "^1.0.0-beta14.patch1",
