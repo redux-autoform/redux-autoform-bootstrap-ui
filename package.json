@@ -1,6 +1,6 @@
 {
   "name": "redux-autoform-bootstrap-ui",
-  "version": "1.8.0-experimental",
+  "version": "1.8.1-experimental",
   "description": "Bootstrap UI implementation for redux-autoform",
   "main": "./lib/index.js",
   "scripts": {
@@ -38,7 +38,7 @@
     "react-redux": "^5.0.0",
     "react-select-plus": "^1.0.0-beta14.patch1",
     "react-widgets": "^3.4.2",
-    "redux-autoform-utils": "^1.0.4-experimental"
+    "redux-autoform-utils": "1.0.6-experimental"
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",
